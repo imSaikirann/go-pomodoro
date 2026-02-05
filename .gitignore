@@ -1,0 +1,8 @@
+# Go binaries
+*.exe
+*.out
+pomodoro
+
+# Go build cache
+/dist
+/bin
