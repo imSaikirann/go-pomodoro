@@ -11,11 +11,11 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: pomodoro start [minutes]")
+		help.Welcome()
 		return
 	}
 
-	command := os.Args[1] 
+	command := os.Args[1]
 
 	switch command {
 	case "start":
@@ -33,7 +33,6 @@ func main() {
 		timer.Start(minutes)
 	case "help":
 		help.Print()
-		
 
 	default:
 		fmt.Println("Unknown command:", command)
