@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/imSaikirann/go-pomodoro/internal/timer"
+	"github.com/imSaikirann/go-pomodoro/internal/timer/help"
 )
 
 func main() {
@@ -30,6 +31,9 @@ func main() {
 		}
 
 		timer.Start(minutes)
+	case "help":
+		help.Print()
+		
 
 	default:
 		fmt.Println("Unknown command:", command)
