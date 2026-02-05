@@ -13,6 +13,15 @@ func main() {
 		fmt.Println("Usage: pomodoro start [minutes]")
 		return
 	}
+
+	min, err := strconv.Atoi(os.Args[2])
+    if err == nil {
+		if min < 0 {
+		fmt.Println("Number should be between  1 - 100 :")
+		return
+		}
+	}
+
 	
 
 	command := os.Args[1]  // arg 1 ("start","2")
