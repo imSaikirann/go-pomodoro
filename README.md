@@ -23,3 +23,17 @@ Install the CLI using Go:
 go install github.com/imSaikirann/go-pomodoro/cmd/pomodoro@latest
 
 
+## How to Use
+
+After installation, you can use the Pomodoro CLI from anywhere in your terminal.
+
+### Start a Pomodoro session (default 25 minutes)
+
+```bash
+pomodoro start
+
+
+### Start a Pomodoro session with a custom duration
+
+```bash
+pomodoro start 15
