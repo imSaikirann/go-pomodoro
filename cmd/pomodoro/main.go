@@ -14,28 +14,24 @@ func main() {
 		return
 	}
 
-	min, err := strconv.Atoi(os.Args[2])
-    if err == nil {
-		if min < 0 {
-		fmt.Println("Number should be between  1 - 100 :")
-		return
-		}
-	}
-
-	
-
-	command := os.Args[1]  // arg 1 ("start","2")
+	command := os.Args[1] 
 
 	switch command {
 	case "start":
-		minutes := 25
+		minutes := 25 // default timer if dont provide min in command
+
 		if len(os.Args) > 2 {
-			if m, err := strconv.Atoi(os.Args[2]); err == nil {
-				minutes = m
+			min, err := strconv.Atoi(os.Args[2])
+			if err != nil || min < 1 || min > 100 {
+				fmt.Println(" Minutes must be a number between 1 and 100")
+				return
 			}
+			minutes = min
 		}
+
 		timer.Start(minutes)
+
 	default:
-		fmt.Println("unknown command:", command)
+		fmt.Println("Unknown command:", command)
 	}
 }
