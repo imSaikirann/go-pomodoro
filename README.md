@@ -22,8 +22,10 @@ Install the CLI using Go:
 ```bash
 go install github.com/imSaikirann/go-pomodoro/cmd/pomodoro@latest
 
+---
 
-## How to Use
+
+## Usage
 
 After installation, you can use the Pomodoro CLI from anywhere in your terminal.
 
