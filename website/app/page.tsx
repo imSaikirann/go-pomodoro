@@ -27,19 +27,37 @@ export default function Home() {
           </ul>
         </section>
 
-        {/* Installation */}
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Installation</h2>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Make sure Go is installed:{" "}
+        {/* Download */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold">Download</h2>
+
+          <div className="flex flex-wrap gap-3">
             <a
-              href="https://go.dev/dl"
-              className="underline underline-offset-4"
-              target="_blank"
+              href="https://github.com/imSaikirann/go-pomodoro/releases/latest/download/go-pomodoro-windows.exe"
+              className="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black"
             >
-              https://go.dev/dl
+              Download for Windows
             </a>
-          </p>
+
+            <a
+              href="https://github.com/imSaikirann/go-pomodoro/releases/latest/download/go-pomodoro-linux"
+              className="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black"
+            >
+              Download for Linux
+            </a>
+
+            <a
+              href="https://github.com/imSaikirann/go-pomodoro/releases/latest/download/go-pomodoro-mac"
+              className="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black"
+            >
+              Download for macOS
+            </a>
+          </div>
+        </section>
+
+        {/* Installation (Go install option) */}
+        <section className="space-y-3">
+          <h2 className="text-xl font-semibold">Install via Go</h2>
 
           <pre className="rounded-lg bg-zinc-100 dark:bg-zinc-900 p-4 text-sm overflow-x-auto">
             <code>
@@ -57,19 +75,15 @@ go install github.com/imSaikirann/go-pomodoro/cmd/pomodoro@latest
           </p>
 
           <pre className="rounded-lg bg-zinc-100 dark:bg-zinc-900 p-4 text-sm overflow-x-auto">
-            <code>
-pomodoro start
-            </code>
+            <code>pomodoro start</code>
           </pre>
 
           <p className="text-zinc-600 dark:text-zinc-400">
-            Start a Pomodoro session with a custom duration (minutes):
+            Start a Pomodoro session with a custom duration:
           </p>
 
           <pre className="rounded-lg bg-zinc-100 dark:bg-zinc-900 p-4 text-sm overflow-x-auto">
-            <code>
-pomodoro start 15
-            </code>
+            <code>pomodoro start 15</code>
           </pre>
         </section>
 
