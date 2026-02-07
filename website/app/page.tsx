@@ -1,96 +1,87 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Download, Apple, Laptop, Terminal } from "lucide-react";
 
 export default function Home() {
+  const [seconds, setSeconds] = useState(1500);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prev) => (prev <= 0 ? 1500 : prev - 1));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const format = (s: number) => {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return `${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+  };
+
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-100 flex items-center justify-center">
-      <main className="w-full max-w-2xl px-6 py-24 space-y-10">
-        {/* Header */}
-        <header className="space-y-4">
-          <h1 className="text-3xl font-semibold tracking-tight">
+    <div className="min-h-screen bg-background flex items-center justify-center px-6">
+      <main className="w-full max-w-4xl py-24 space-y-12">
+
+        {/* Hero */}
+        <section className="text-center space-y-4">
+          <h1 className="text-4xl font-semibold tracking-tight">
             🍅 go-pomodoro
           </h1>
-          <p className="text-zinc-600 dark:text-zinc-400 leading-7">
-            A simple and lightweight <span className="font-medium">Pomodoro timer CLI</span>{" "}
-            built with <span className="font-medium">Go</span> to help developers stay focused
-            directly from the terminal.
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Lightweight Pomodoro timer CLI built with Go  stay focused directly
+            from your terminal with a minimal and distraction-free workflow.
           </p>
-        </header>
-
-        {/* Features */}
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Features</h2>
-          <ul className="list-disc list-inside space-y-1 text-zinc-600 dark:text-zinc-400">
-            <li>Terminal-based Pomodoro timer</li>
-            <li>Default 25-minute focus session</li>
-            <li>Custom duration support</li>
-            <li>Minimal and distraction-free</li>
-          </ul>
         </section>
 
-        {/* Download */}
-        <section className="space-y-4">
-          <h2 className="text-xl font-semibold">Download</h2>
+        {/* Terminal Preview */}
+        <Card className="bg-black text-green-400 font-mono">
+          <CardContent className="p-6 space-y-2">
+            <div className="flex items-center gap-2 text-green-300">
+              <Terminal size={16} />
+              <span>$ pomodoro start</span>
+            </div>
+            <p className="text-sm text-green-500">Session running...</p>
+            <p className="text-4xl font-semibold mt-3">{format(seconds)}</p>
+          </CardContent>
+        </Card>
 
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="https://github.com/imSaikirann/go-pomodoro/releases/latest/download/go-pomodoro-windows.exe"
-              className="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black"
-            >
-              Download for Windows
+        {/* Download buttons */}
+        <section className="flex flex-wrap justify-center gap-4">
+          <Button asChild size="lg">
+            <a href="https://github.com/imSaikirann/go-pomodoro/releases/download/v0.1.0/go-pomodoro-windows.exe">
+              <Laptop className="mr-2" size={18} />
+              Windows
             </a>
+          </Button>
 
-            <a
-              href="https://github.com/imSaikirann/go-pomodoro/releases/latest/download/go-pomodoro-linux"
-              className="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black"
-            >
-              Download for Linux
+          <Button asChild size="lg" variant="secondary">
+            <a href="https://github.com/imSaikirann/go-pomodoro/releases/download/v0.1.0/go-pomodoro-linux">
+              <Download className="mr-2" size={18} />
+              Linux
             </a>
+          </Button>
 
-            <a
-              href="https://github.com/imSaikirann/go-pomodoro/releases/latest/download/go-pomodoro-mac"
-              className="px-4 py-2 rounded-lg bg-black text-white dark:bg-white dark:text-black"
-            >
-              Download for macOS
+          <Button asChild size="lg" variant="outline">
+            <a href="https://github.com/imSaikirann/go-pomodoro/releases/download/v0.1.0/go-pomodoro-mac">
+              <Apple className="mr-2" size={18} />
+              macOS
             </a>
-          </div>
+          </Button>
         </section>
 
-        {/* Installation (Go install option) */}
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Install via Go</h2>
-
-          <pre className="rounded-lg bg-zinc-100 dark:bg-zinc-900 p-4 text-sm overflow-x-auto">
+        {/* Install via Go */}
+        <section className="text-center space-y-3">
+          <p className="text-muted-foreground">Install via Go</p>
+          <pre className="rounded-xl bg-muted p-4 text-sm overflow-x-auto">
             <code>
 go install github.com/imSaikirann/go-pomodoro/cmd/pomodoro@latest
             </code>
           </pre>
         </section>
 
-        {/* Usage */}
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Usage</h2>
-
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Start a Pomodoro session (default 25 minutes):
-          </p>
-
-          <pre className="rounded-lg bg-zinc-100 dark:bg-zinc-900 p-4 text-sm overflow-x-auto">
-            <code>pomodoro start</code>
-          </pre>
-
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Start a Pomodoro session with a custom duration:
-          </p>
-
-          <pre className="rounded-lg bg-zinc-100 dark:bg-zinc-900 p-4 text-sm overflow-x-auto">
-            <code>pomodoro start 15</code>
-          </pre>
-        </section>
-
-        {/* Footer */}
-        <footer className="pt-8 text-sm text-zinc-500 dark:text-zinc-400">
-          Built for developers who prefer focus over noise.
-        </footer>
       </main>
     </div>
   );
