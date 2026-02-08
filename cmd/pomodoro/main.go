@@ -4,11 +4,13 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	
 
-	"github.com/imSaikirann/go-pomodoro/internal/timer"
 	"github.com/imSaikirann/go-pomodoro/internal/help"
+	"github.com/imSaikirann/go-pomodoro/internal/timer"
+	"github.com/imSaikirann/go-pomodoro/internal/update"
 )
+
+var Version = "dev" 
 
 func main() {
 	if len(os.Args) < 2 {
@@ -19,24 +21,35 @@ func main() {
 	command := os.Args[1]
 
 	switch command {
+
 	case "start":
-		minutes := 25 // default timer if dont provide min in command
+		minutes := 25
 
 		if len(os.Args) > 2 {
 			min, err := strconv.Atoi(os.Args[2])
 			if err != nil || min < 1 || min > 100 {
-				fmt.Println(" Minutes must be a number between 1 and 100")
+				fmt.Println("Minutes must be a number between 1 and 100")
 				return
 			}
 			minutes = min
 		}
 
 		timer.Start(minutes)
-	case "help", " --help ":
+
+	case "help", "--help":
 		help.Print()
 
+	case "version", "-v":
+		fmt.Printf("pomodoro %s\n", Version)
+		return
+	case "update":
+		update.Version = Version
+		update.RunUpdate()
+		return
+
+
 	default:
-	fmt.Printf("❌ unknown command: %s\n", command)
-	fmt.Println("run `pomodoro help` to see available commands.")
+		fmt.Printf("❌ unknown command: %s\n", command)
+		fmt.Println("run `pomodoro help` to see available commands.")
 	}
 }
