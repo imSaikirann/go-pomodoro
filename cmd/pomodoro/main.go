@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	
 
 	"github.com/imSaikirann/go-pomodoro/internal/timer"
-	"github.com/imSaikirann/go-pomodoro/internal/timer/help"
+	"github.com/imSaikirann/go-pomodoro/internal/help"
 )
 
 func main() {
@@ -31,10 +32,11 @@ func main() {
 		}
 
 		timer.Start(minutes)
-	case "help":
+	case "help", " --help ":
 		help.Print()
 
 	default:
-		fmt.Println("Unknown command:", command)
+	fmt.Printf("❌ unknown command: %s\n", command)
+	fmt.Println("run `pomodoro help` to see available commands.")
 	}
 }

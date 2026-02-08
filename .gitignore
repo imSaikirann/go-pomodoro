@@ -6,3 +6,8 @@ pomodoro
 # Go build cache
 /dist
 /bin
+
+release/
+*.exe
+
+.github/
