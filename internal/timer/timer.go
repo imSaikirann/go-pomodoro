@@ -27,7 +27,7 @@ func Start(minutes int) {
 
 		totalSeconds := minutes * 60
 
-		for i := totalSeconds; i > 0; i-- {
+		for i := totalSeconds; i >= 0; i-- {
 
 			select {
 			case <-ctx.Done():

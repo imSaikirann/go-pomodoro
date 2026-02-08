@@ -8,21 +8,17 @@ import (
 	"os/signal"
 	"runtime"
 	"time"
-
 )
 
 func Break(minutes int) {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
-
-
 	fmt.Printf("\n🍅 Break started (%d minutes)\n\n", minutes)
 
 	totalSeconds := minutes * 60
 
-
-	for i := totalSeconds; i > 0; i-- {
+	for i := totalSeconds; i >= 0; i-- {
 
 		select {
 		case <-ctx.Done():
@@ -37,9 +33,10 @@ func Break(minutes int) {
 
 	fmt.Println("\n✅ Break completed!")
 	if runtime.GOOS == "windows" {
-		exec.Command("powershell", "-c", "[console]::beep(800,300)").Run()
+		exec.Command("powershell", "-c", `
+		[console]::beep(500,200);
+		[console]::beep(500,200)
+	`).Run()
 	}
-
-
 
 }
