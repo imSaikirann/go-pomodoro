@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Laptop, Apple, Download, Terminal } from "lucide-react";
 import InstallViaGo from "@/components/InstallByLink";
-
+import PomodoroCLI from "@/app/assests/logo.png"
 type OS = "windows" | "linux" | "mac";
 
 export default function InstallPage() {
@@ -50,22 +50,33 @@ export default function InstallPage() {
       <main className="max-w-4xl mx-auto space-y-20">
 
         {/* INTRO */}
-        <section className="text-center space-y-5">
-          <h1 className="text-4xl font-semibold tracking-tight">
-            🍅 go-pomodoro
-          </h1>
 
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A developer-first Pomodoro CLI built with Go that helps you stay
-            focused directly from the terminal. Automatic focus cycles,
-            intelligent break timing, and a zero-distraction workflow.
-          </p>
+<section className="text-center space-y-6">
 
-          <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-            <Terminal size={16} />
-            <span>terminal-native productivity tool</span>
-          </div>
-        </section>
+  <div className="flex items-center justify-center gap-4">
+    <img
+      src={PomodoroCLI.src}
+      alt="go-pomodoro logo"
+      className="w-14 h-14"
+    />
+
+    <h1 className="text-4xl font-semibold tracking-tight">
+      go-pomodoro
+    </h1>
+  </div>
+
+  <p className="text-muted-foreground max-w-2xl mx-auto">
+    A developer-first Pomodoro CLI built with Go that helps you stay
+    focused directly from the terminal. Automatic focus cycles,
+    intelligent break timing, and a zero-distraction workflow.
+  </p>
+
+  <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+    <Terminal size={16} />
+    <span>terminal-native productivity tool</span>
+  </div>
+</section>
+
 
         {/* INSTALL */}
         <section className="space-y-14">
