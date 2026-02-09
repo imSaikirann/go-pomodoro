@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Laptop, Apple, Download, Terminal } from "lucide-react";
 import InstallViaGo from "@/components/InstallByLink";
-import PomodoroCLI from "@/app/assests/logo.png"
+import PomodoroCLI from "@/app/assests/logo.png";
+
 type OS = "windows" | "linux" | "mac";
 
 export default function InstallPage() {
@@ -46,47 +47,52 @@ export default function InstallPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background px-6 py-20">
+    <div className="min-h-screen bg-background px-4 sm:px-6 py-14 sm:py-20">
+      <main className="max-w-5xl mx-auto space-y-16 flex flex-col items-center">
 
-      
-      <main className="max-w-4xl mx-auto space-y-20 flex flex-col items-center justify-center">
-       <a href="https://www.producthunt.com/products/go-pomodoro-cli?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-go-pomodoro-cli" target="_blank" rel="noopener noreferrer"><img alt="Go Pomodoro CLI - A minimal terminal Pomodoro timer with smart alerts | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1075881&amp;theme=light&amp;t=1770558861574"/></a>
+        {/* Product Hunt */}
+        <div className="w-full flex justify-center overflow-x-auto">
+          <a
+            href="https://www.producthunt.com/products/go-pomodoro-cli"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              alt="Go Pomodoro CLI"
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1075881&theme=light"
+              className="max-w-full h-auto"
+            />
+          </a>
+        </div>
+
         {/* INTRO */}
+        <section className="text-center space-y-5 px-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <img src={PomodoroCLI.src} alt="logo" className="w-12 h-12 sm:w-14 sm:h-14" />
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+              go-pomodoro
+            </h1>
+          </div>
 
-<section className="text-center space-y-6">
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
+            A developer-first Pomodoro CLI built with Go that helps you stay
+            focused directly from the terminal. Automatic focus cycles,
+            intelligent break timing, and a zero-distraction workflow.
+          </p>
 
-  <div className="flex items-center justify-center gap-4">
-    <img
-      src={PomodoroCLI.src}
-      alt="go-pomodoro logo"
-      className="w-14 h-14"
-    />
-
-    <h1 className="text-4xl font-semibold tracking-tight">
-      go-pomodoro
-    </h1>
-  </div>
-
-  <p className="text-muted-foreground max-w-2xl mx-auto">
-    A developer-first Pomodoro CLI built with Go that helps you stay
-    focused directly from the terminal. Automatic focus cycles,
-    intelligent break timing, and a zero-distraction workflow.
-  </p>
-
-  <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-    <Terminal size={16} />
-    <span>terminal-native productivity tool</span>
-  </div>
-</section>
-
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+            <Terminal size={16} />
+            <span>terminal-native productivity tool</span>
+          </div>
+        </section>
 
         {/* INSTALL */}
-        <section className="space-y-14">
+        <section className="w-full space-y-12">
 
           {/* Install via Go */}
           <div className="text-center space-y-4">
-            <h2 className="text-3xl font-semibold">Install</h2>
-            <p className="text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl font-semibold">Install</h2>
+            <p className="text-muted-foreground text-sm">
               Fastest way for developers
             </p>
             <InstallViaGo />
@@ -94,11 +100,11 @@ export default function InstallPage() {
 
           <div className="border-t" />
 
-          {/* Binary Install */}
+          {/* Binary */}
           <div className="space-y-8">
 
             <div className="text-center space-y-2">
-              <h3 className="text-xl font-semibold">
+              <h3 className="text-lg sm:text-xl font-semibold">
                 Download binary
               </h3>
               <p className="text-muted-foreground text-sm">
@@ -107,7 +113,7 @@ export default function InstallPage() {
             </div>
 
             {/* OS selector */}
-            <div className="flex justify-center gap-3 flex-wrap">
+            <div className="flex justify-center gap-2 sm:gap-3 flex-wrap">
               <Button
                 variant={os === "windows" ? "default" : "outline"}
                 onClick={() => setOs("windows")}
@@ -133,8 +139,8 @@ export default function InstallPage() {
               </Button>
             </div>
 
-            {/* Install Card */}
-            <div className="max-w-2xl mx-auto rounded-2xl border bg-card shadow-sm p-8 space-y-6">
+            {/* Install card */}
+            <div className="w-full max-w-2xl mx-auto rounded-2xl border bg-card shadow-sm p-6 sm:p-8 space-y-6">
               <Button size="lg" className="w-full" asChild>
                 <a href={data[os].download}>
                   Download for {os}
@@ -146,7 +152,7 @@ export default function InstallPage() {
                   Setup steps
                 </p>
 
-                <pre className="bg-muted rounded-xl p-5 text-sm overflow-x-auto">
+                <pre className="bg-muted rounded-xl p-4 text-xs sm:text-sm overflow-x-auto">
                   <code>{data[os].steps}</code>
                 </pre>
               </div>
@@ -154,7 +160,6 @@ export default function InstallPage() {
 
           </div>
         </section>
-
       </main>
     </div>
   );
