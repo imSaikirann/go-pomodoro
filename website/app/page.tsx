@@ -47,8 +47,10 @@ export default function InstallPage() {
 
   return (
     <div className="min-h-screen bg-background px-6 py-20">
-      <main className="max-w-4xl mx-auto space-y-20">
 
+      
+      <main className="max-w-4xl mx-auto space-y-20 flex flex-col items-center justify-center">
+       <a href="https://www.producthunt.com/products/go-pomodoro-cli?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-go-pomodoro-cli" target="_blank" rel="noopener noreferrer"><img alt="Go Pomodoro CLI - A minimal terminal Pomodoro timer with smart alerts | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1075881&amp;theme=light&amp;t=1770558861574"/></a>
         {/* INTRO */}
 
 <section className="text-center space-y-6">
