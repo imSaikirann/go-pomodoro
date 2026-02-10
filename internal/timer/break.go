@@ -3,11 +3,14 @@ package timer
 import (
 	"context"
 	"fmt"
+
 	"os"
 	"os/exec"
 	"os/signal"
 	"runtime"
 	"time"
+
+
 )
 
 func Break(minutes int) {
@@ -15,6 +18,7 @@ func Break(minutes int) {
 	defer stop()
 
 	fmt.Printf("\n🍅 Break started (%d minutes)\n\n", minutes)
+
 
 	totalSeconds := minutes * 60
 

@@ -10,6 +10,7 @@ import (
 	"time"
 
 	figure "github.com/common-nighthawk/go-figure"
+	"github.com/imSaikirann/go-pomodoro/internal/notifier"
 )
 
 func Start(minutes int) {
@@ -18,12 +19,13 @@ func Start(minutes int) {
 
 	myFigure := figure.NewFigure("GO-POMODORO", "", true)
 	myFigure.Print()
-
+   
 	cycles := getCycles(minutes)
 
 	for c := 1; c <= cycles; c++ {
 
 		fmt.Printf("\n🍅 cycle %d/%d — focus started (%d minutes)\n\n", c, cycles, minutes)
+        notifier.Notify("Go-Pomodoro", "Focus session started")
 
 		totalSeconds := minutes * 60
 
@@ -42,6 +44,7 @@ func Start(minutes int) {
 		}
 
 		fmt.Println("\n✅ focus session completed!")
+        notifier.Alert("Go-Pomodoro", "Focus completed — Time for break")
 
 		if runtime.GOOS == "windows" {
 			exec.Command("powershell", "-c", "[console]::beep(800,300)").Run()
@@ -51,6 +54,8 @@ func Start(minutes int) {
 		if c < cycles {
 			breakTime := getBreakMinutes(minutes)
 			if breakTime > 0 {
+				
+	        notifier.Alert("Go-Pomodoro", "Break Started — Time to Stand")  
 				Break(breakTime)
 			}
 		}
