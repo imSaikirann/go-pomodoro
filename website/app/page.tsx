@@ -22,17 +22,29 @@ export default function InstallPage() {
 4. Run:
    pomodoro start`,
     },
-    linux: {
-      download:
-        "https://github.com/imSaikirann/go-pomodoro/releases/latest/download/pomodoro-linux-amd64.tar.gz",
-      steps: `1. Download the archive
+  linux: {
+  download:
+    "https://github.com/imSaikirann/go-pomodoro/releases/latest/download/pomodoro-linux-amd64.tar.gz",
+  steps: `1. Download the archive
 2. Extract:
    tar -xzf pomodoro-linux-amd64.tar.gz
-3. Move binary:
-   sudo mv pomodoro-linux-amd64 /usr/local/bin/pomodoro
-4. Run:
+
+3. Create local bin (if not exists):
+   mkdir -p ~/.local/bin
+
+4. Move binary:
+   mv pomodoro-linux-amd64 ~/.local/bin/pomodoro
+
+5. Make executable:
+   chmod +x ~/.local/bin/pomodoro
+
+6. Ensure PATH includes ~/.local/bin:
+   export PATH="$HOME/.local/bin:$PATH"
+
+7. Run:
    pomodoro start`,
-    },
+},
+
     mac: {
       download:
         "https://github.com/imSaikirann/go-pomodoro/releases/latest/download/pomodoro-darwin-amd64.tar.gz",
