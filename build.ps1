@@ -1,5 +1,5 @@
 $releaseDir = "release"
-$version = "v0.1.0"   
+$version = "v0.2.0"   
 
 New-Item -ItemType Directory -Force -Path $releaseDir | Out-Null
 

@@ -1,7 +1,17 @@
-# go-pomodoro 🍅
+# go-pomodoro
 
-A simple and lightweight **Pomodoro timer CLI** built with **Go** to help developers stay focused directly from the terminal.
+**A lightweight, distraction-free Pomodoro timer built for developers who live in the terminal.**
 
+![Go Version](https://img.shields.io/github/go-mod/go-version/imSaikirann/go-pomodoro)
+![Downloads](https://img.shields.io/github/downloads/imSaikirann/go-pomodoro/total)
+
+---
+
+## Demo
+
+```bash
+$ pomodoro start
+⏱  25:00 Focus session started...
 ---
 
 ## Features
