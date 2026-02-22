@@ -1,9 +1,11 @@
 import Link from "next/link";
 import CodeBlock from "@/components/common/CodeBlock";
+import BackButton from "@/components/common/BackButton";
 
 export default function DocsHomePage() {
   return (
     <div className="space-y-8">
+      <BackButton/>
       <div className="space-y-3">
         <h1 className="text-3xl font-semibold">go-pomodoro</h1>
 
@@ -27,7 +29,7 @@ export default function DocsHomePage() {
       </div>
 
       {/* Quick install */}
-      <div className="rounded-xl border bg-muted/40 p-4 space-y-4">
+
         <p className="text-sm font-medium">Quick install</p>
 
         <CodeBlock code="npm i -g go-pomodoro" />
@@ -38,6 +40,6 @@ export default function DocsHomePage() {
 
         <CodeBlock code="pomodoro -v" />
       </div>
-    </div>
+
   );
 }

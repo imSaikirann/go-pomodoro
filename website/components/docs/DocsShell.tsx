@@ -8,18 +8,20 @@ export default function DocsShell({
 }) {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* mobile top bar */}
       <DocsMobileNav />
 
-      <div className="mx-auto flex w-full max-w-7xl md:px-6">
-        {/* desktop sidebar */}
+      <div className="mx-auto flex w-full  md:px-6">
+        {/* sidebar */}
         <aside className="hidden md:block">
           <DocsSidebar />
         </aside>
 
         {/* content */}
-        <main className="flex-1 px-4 py-8 sm:px-8 sm:py-10">
-          <div className="mx-auto w-full max-w-3xl">{children}</div>
+       <main className="flex-1 px-4 py-6 sm:px-8 sm:py-10">
+      
+          <div className="w-full max-w-3xl md:mx-auto">
+            {children}
+          </div>
         </main>
       </div>
     </div>

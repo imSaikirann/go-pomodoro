@@ -7,7 +7,7 @@ export default function DocsLayout({
 }) {
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto flex max-w-7xl">
+      <div className="mx-auto flex max-w-8xl">
         {/* Desktop sidebar */}
         <aside className="hidden md:sticky md:top-0 md:block md:h-screen md:w-64 md:flex-shrink-0 border-r bg-background">
           <DocsSidebar />

@@ -54,7 +54,8 @@ export default function DocsHome() {
                 show: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.45 }}
-              className="text-4xl font-bold tracking-tight sm:text-5xl"
+               style={{ fontFamily: "var(--font-bricolage)" }}
+          className="text-4xl font-bold tracking-[-0.02em] sm:text-5xl font-[var(--font-bricolage)]"
             >
               Stay focused from your{" "}
               <span className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">

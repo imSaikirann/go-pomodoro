@@ -1,10 +1,14 @@
 import Link from "next/link";
 import CodeBlock from "@/components/common/CodeBlock";
+import BackButton from "@/components/common/BackButton";
 
 export default function InstallationPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-8 px-4 sm:px-0">
-      {/* header */}
+    <div className="space-y-6 sm:space-y-8">
+
+            <BackButton/>
+      
+      {/* Header — SAME pattern as home */}
       <div className="space-y-3">
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
           Installation
@@ -15,9 +19,9 @@ export default function InstallationPage() {
         </p>
       </div>
 
-      {/* npm */}
-      <section className="space-y-4">
-        <h2 className="text-base sm:text-xl font-medium">
+      {/* npm section — grouped like home */}
+      <div className="space-y-4">
+        <h2 className="text-lg sm:text-xl font-medium">
           Install via npm (recommended)
         </h2>
 
@@ -28,11 +32,11 @@ export default function InstallationPage() {
         </p>
 
         <CodeBlock code="pomodoro -v" />
-      </section>
+      </div>
 
-      {/* go install */}
-      <section className="space-y-4">
-        <h2 className="text-base sm:text-xl font-medium">
+      {/* go section — grouped */}
+      <div className="space-y-4">
+        <h2 className="text-lg sm:text-xl font-medium">
           Install via Go
         </h2>
 
@@ -43,9 +47,9 @@ export default function InstallationPage() {
           <span className="font-mono text-foreground">$GOPATH/bin</span>{" "}
           is in your PATH.
         </p>
-      </section>
+      </div>
 
-      {/* next step CTA */}
+      {/* CTA — unchanged but aligned */}
       <div className="rounded-xl border bg-muted/40 p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <p className="text-sm font-medium">Next step</p>

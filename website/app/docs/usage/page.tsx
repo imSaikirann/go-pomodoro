@@ -1,8 +1,12 @@
+import BackButton from "@/components/common/BackButton";
 import CodeBlock from "@/components/common/CodeBlock";
 
 export default function UsagePage() {
   return (
     <div className="space-y-10">
+
+            <BackButton/>
+      
       {/* Title */}
       <div className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">Usage</h1>
