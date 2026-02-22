@@ -1,3 +1,5 @@
+import CodeBlock from "@/components/common/CodeBlock";
+
 export default function UsagePage() {
   return (
     <div className="space-y-10">
@@ -58,9 +60,9 @@ Commands:
       <section className="space-y-4">
         <h2 className="text-xl font-medium">Custom duration</h2>
 
-        <pre className="rounded-xl border bg-muted/40 p-4 text-sm font-mono">
-          <code>pomodoro start 15</code>
-        </pre>
+
+        <CodeBlock code="pomodoro start 15" />
+        
 
         <p className="text-sm text-muted-foreground">
           Start a focus session with a custom duration in minutes.
@@ -68,16 +70,7 @@ Commands:
       </section>
 
       {/* Workflow */}
-      <section className="space-y-4">
-        <h2 className="text-xl font-medium">Typical workflow</h2>
 
-        <pre className="rounded-xl border bg-muted/40 p-5 text-sm overflow-x-auto font-mono">
-          <code>{`pomodoro start
-# focus…
-# break…
-# repeat`}</code>
-        </pre>
-      </section>
     </div>
   );
 }

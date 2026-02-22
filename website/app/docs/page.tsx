@@ -1,18 +1,42 @@
+import Link from "next/link";
+import CodeBlock from "@/components/common/CodeBlock";
+
 export default function DocsHomePage() {
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-semibold">go-pomodoro</h1>
+    <div className="space-y-8">
+      <div className="space-y-3">
+        <h1 className="text-3xl font-semibold">go-pomodoro</h1>
 
-      <p className="text-muted-foreground">
-        A developer-first Pomodoro CLI built with Go that helps you stay focused
-        directly from the terminal.
-      </p>
+        <p className="text-muted-foreground">
+          go-pomodoro is a developer-first Pomodoro CLI built with Go that helps
+          you stay focused directly from the terminal. No distractions, no UI
+          clutter — just fast, keyboard-driven productivity.
+        </p>
 
-      <div className="rounded-xl border bg-muted/40 p-4">
-        <p className="text-sm font-medium mb-2">Quick install</p>
-        <pre className="text-sm overflow-x-auto">
-          <code>npm i -g go-pomodoro</code>
-        </pre>
+        <p className="text-sm text-muted-foreground">
+          Designed for developers who live in the terminal and want a simple,
+          reliable way to manage deep work sessions.
+        </p>
+
+        <Link
+          href="/docs/installation"
+          className="inline-flex text-sm font-medium text-primary hover:underline underline-offset-4"
+        >
+          View full installation guide 
+        </Link>
+      </div>
+
+      {/* Quick install */}
+      <div className="rounded-xl border bg-muted/40 p-4 space-y-4">
+        <p className="text-sm font-medium">Quick install</p>
+
+        <CodeBlock code="npm i -g go-pomodoro" />
+
+        <p className="text-sm text-muted-foreground">
+          After installation, verify it works:
+        </p>
+
+        <CodeBlock code="pomodoro -v" />
       </div>
     </div>
   );
