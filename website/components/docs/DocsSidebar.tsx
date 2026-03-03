@@ -18,7 +18,7 @@ export default function DocsSidebar({
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-full w-64 flex-col border-r bg-background">
+    <aside className="flex h-full w-64 flex-col border-r bg-background mt-6">
       {/* Header */}
       <div className="border-b px-6 py-5">
         <h2 className="text-base font-semibold tracking-tight">

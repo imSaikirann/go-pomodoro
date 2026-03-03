@@ -1,149 +1,105 @@
-"use client";
+'use client';
 
-import PomodoroProblemsBento from "@/components/PomodoroProblemsBento";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import MacTerminalDemo from "@/components/MacTerminalDemo";
-import FinalCTA from "@/components/FinalCTA";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import {
+  Bell,
+  Brain,
+  BarChart3,
+  TerminalSquare,
+  Sparkles,
+  Github,
+  Twitter,
+} from 'lucide-react';
+import { ProblemSolution } from '@/components/landing/ProblemSolution';
+import { HowItWorks } from '@/components/landing/HowItWorks';
+import { BreakCard } from '@/components/landing/bento/BreakCard';
+import { CoachCard } from '@/components/landing/bento/CoachCard';
+import { MonitorCard } from '@/components/landing/bento/MonitorCard';
+import { CliCard } from '@/components/landing/bento/CliCard';
+import { RealityCheck } from '@/components/landing/RealityCheck';
+import Hero from '@/components/landing/Hero';
 
-export default function DocsHome() {
+
+
+
+
+
+const SocialProof = () => (
+  <section className="px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl text-center">
+      <p className="text-sm text-gray-500 mb-6">
+        Trusted by focused developers worldwide
+      </p>
+
+      <div className="flex flex-wrap justify-center gap-8 opacity-70 text-sm font-semibold text-gray-600 dark:text-gray-400">
+        <span>Developers</span>
+        <span>Startup Founders</span>
+        <span>Remote Teams</span>
+        <span>Indie Hackers</span>
+      </div>
+    </div>
+  </section>
+);
+
+
+const CTA = () => {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        {/* 🌌 layered glow background */}
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          {/* top glow */}
-          <div className="absolute left-1/2 top-[-20%] h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-sky-500/20 blur-[120px]" />
+    <section className="px-4 py-24 sm:px-6 lg:px-8">
+      <div
+        className="
+          mx-auto max-w-4xl text-center rounded-3xl p-12
+          bg-gradient-to-b from-blue-50 to-white
+          dark:from-blue-950/30 dark:to-gray-950
+          border border-blue-100 dark:border-blue-900/40
+        "
+      >
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
+          Build healthier focus habits
+        </h2>
 
-          {/* secondary glow */}
-          <div className="absolute left-1/2 top-[10%] h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-indigo-500/10 blur-[140px]" />
+        <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto leading-relaxed">
+          Stay aware of long sitting, take smarter breaks, and protect your
+          deep work energy throughout the day.
+        </p>
 
-          {/* subtle radial */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(120,119,198,0.15),transparent_60%)]" />
-        </div>
-
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={{
-            hidden: {},
-            show: {
-              transition: { staggerChildren: 0.08 },
-            },
-          }}
-          className="mx-auto flex min-h-[80vh] max-w-5xl flex-col items-center justify-center px-6 text-center"
+        <button
+          className="
+            px-8 py-3 rounded-xl
+            bg-blue-600 hover:bg-blue-700
+            text-white font-medium
+            shadow-sm hover:shadow-md
+            transition-all duration-200
+          "
         >
-          <div className="space-y-6">
-            {/* ✅ Badge */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 16 },
-                show: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.4 }}
-              className="inline-flex items-center rounded-full border border-white/10 bg-background/60 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur"
-            >
-              🍅 Free & Open Source
-            </motion.div>
+          Get started
+        </button>
+      </div>
+    </section>
+  );
+};
 
-            {/* ✅ Headline */}
-            <motion.h1
-              variants={{
-                hidden: { opacity: 0, y: 24 },
-                show: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.45 }}
-               style={{ fontFamily: "var(--font-bricolage)" }}
-          className="text-4xl font-bold tracking-[-0.02em] sm:text-5xl font-[var(--font-bricolage)]"
-            >
-              Stay focused from your{" "}
-              <span className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                terminal
-              </span>
-            </motion.h1>
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <Hero />
+      <SocialProof />
+      <ProblemSolution/>
+      <RealityCheck/>
 
-            {/* ✅ Description */}
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 24 },
-                show: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.45 }}
-              className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground"
-            >
-              go-pomodoro is a lightweight Pomodoro CLI built with Go that helps
-              developers maintain deep focus with automatic cycles and smart
-              break timing.
-            </motion.p>
+<section className="px-4 py-16 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <BreakCard />
+    <CoachCard />
+    <MonitorCard />
+    <CliCard />
+  </div>
+</section>
+      <HowItWorks/>
 
-            {/* ✅ CTA Row */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 24 },
-                show: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.45 }}
-              className="flex flex-col items-center justify-center gap-3 sm:flex-row"
-            >
-              {/* 🔥 PRIMARY BLACK BUTTON */}
-              <Link
-                href="/docs"
-                className="inline-flex items-center rounded-xl bg-black px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-black/90"
-              >
-                Get started
-              </Link>
 
-              {/* secondary */}
-              <a
-                href="https://github.com/imSaikirann/go-pomodoro"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center rounded-xl border px-7 py-3 text-sm font-medium hover:bg-muted/50 transition hover:-translate-y-0.5"
-              >
-                View on GitHub
-              </a>
-            </motion.div>
+      <CTA />
 
-            {/* ✅ install hint */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 16 },
-                show: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.4 }}
-              className="pt-4"
-            >
-              <div className="mx-auto w-fit rounded-lg border bg-muted/30 px-4 py-2 font-mono text-sm text-muted-foreground">
-                npm install -g go-pomodoro
-              </div>
-            </motion.div>
-
-            {/* ✅ Built with Go */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 12 },
-                show: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="pt-6"
-            >
-              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                <span>Built with</span>
-                <span className="font-semibold text-sky-600">Go</span>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Terminal demo */}
-      <MacTerminalDemo />
-
-      {/* Bento */}
-      <PomodoroProblemsBento />
-
-      <FinalCTA/>
-    </>
+    </main>
   );
 }

@@ -1,9 +1,10 @@
-import DocsShell from "@/components/docs/DocsShell";
+import type { ReactNode } from 'react';
+import DocsShell from '@/components/docs/DocsShell';
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type DocsLayoutProps = {
+  children: ReactNode;
+};
+
+export default function DocsLayout({ children }: DocsLayoutProps) {
   return <DocsShell>{children}</DocsShell>;
 }

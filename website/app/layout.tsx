@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/common/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import { Bricolage_Grotesque } from "next/font/google";
+import Navbar from "@/components/Navbar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,8 +36,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased min-h-screen`}
       >
+
+        <Navbar/>
         {/* Main content */}
-        <main className="flex-1">
+        <main className="flex-1 font-mono mt-10">
           {children}
         </main>
 

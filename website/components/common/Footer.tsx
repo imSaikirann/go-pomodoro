@@ -1,56 +1,79 @@
-import React from "react";
-import { Github } from "lucide-react";
+'use client';
+
+import { Github } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t bg-background">
-      <div className="mx-auto max-w-5xl px-6 py-12">
-        {/* Terminal block */}
-        <div className="overflow-hidden rounded-2xl border bg-muted/30 font-mono text-sm shadow-sm">
-          {/* terminal header */}
-          <div className="flex items-center justify-between border-b px-4 py-2 text-xs text-muted-foreground">
-            <div className="flex items-center gap-2">
-              {/* mac dots */}
-              <span className="h-2 w-2 rounded-full bg-red-500/80" />
-              <span className="h-2 w-2 rounded-full bg-yellow-500/80" />
-              <span className="h-2 w-2 rounded-full bg-green-500/80" />
-              <span className="ml-2">~/go-pomodoro</span>
-            </div>
-            <span className="opacity-60">bash</span>
-          </div>
+    <footer className="relative mt-24 overflow-hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+      {/* ================= BACKGROUND WORDMARK ================= */}
+      <div
+        aria-hidden
+        className="pointer-events-none select-none absolute inset-0 flex items-center justify-center"
+      >
+        <span
+          className="
+            whitespace-nowrap font-bold tracking-tight
+            text-blue-100 dark:text-blue-950/40
+            text-[48px]
+            sm:text-[72px]
+            md:text-[110px]
+            lg:text-[140px]
+            xl:text-[180px]
+            2xl:text-[220px]
+            opacity-70
+          "
+        >
+          go-pomodoro
+        </span>
+      </div>
 
-          {/* terminal content */}
-          <div className="space-y-3 px-4 py-5">
-            <p className="leading-relaxed text-muted-foreground">
-              <span className="text-foreground">$</span>{" "}
-              Built with focus by{" "}
-              <span className="font-semibold text-foreground">
-                SaiKiran
-              </span>
-            </p>
+      {/* ================= CONTENT ================= */}
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-16 sm:py-20">
+        {/* Top section */}
+        <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
+            Build healthier focus habits
+          </h3>
 
-            <a
-              href="https://github.com/imSaikirann/go-pomodoro"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex max-w-full items-center gap-2 break-all text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <span className="text-foreground">$</span>
-              <Github
-                size={14}
-                className="transition-transform group-hover:scale-110"
-              />
-              <span className="underline-offset-4 group-hover:underline">
-                git clone github.com/imSaikirann/go-pomodoro
-              </span>
-            </a>
-          </div>
+          <p className="max-w-xl text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+            Designed for people who spend long hours sitting and want smarter
+            awareness around breaks, posture, and sustained deep work.
+          </p>
+
+          <a
+            href="https://github.com/imSaikirann/go-pomodoro"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              inline-flex items-center gap-2 rounded-xl
+              border border-gray-200 dark:border-gray-800
+              px-4 py-2.5 text-sm font-medium
+              text-gray-700 dark:text-gray-300
+              hover:text-blue-600 dark:hover:text-blue-400
+              hover:border-blue-200 dark:hover:border-blue-800
+              transition-all duration-200
+              bg-white/80 dark:bg-gray-900/80
+              backdrop-blur
+            "
+          >
+            <Github size={16} />
+            View on GitHub
+          </a>
         </div>
 
-        {/* bottom note */}
-        <p className="mt-8 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} go-pomodoro. Stay focused.
-        </p>
+        {/* Divider */}
+        <div className="my-10 sm:my-12 h-px bg-gray-200 dark:bg-gray-800" />
+
+        {/* Bottom bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
+            © {new Date().getFullYear()} go-pomodoro. All rights reserved.
+          </p>
+
+          <p className="text-[11px] text-gray-400 dark:text-gray-500">
+            Developed by Sai Kiran for healthier and smarter deep work habits.
+          </p>
+        </div>
       </div>
     </footer>
   );
