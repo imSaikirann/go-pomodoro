@@ -18,19 +18,11 @@ export default function DocsSidebar({
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-full w-64 flex-col border-r bg-background mt-6">
-      {/* Header */}
-      <div className="border-b px-6 py-5">
-        <h2 className="text-base font-semibold tracking-tight">
-          go-pomodoro
-        </h2>
-        <p className="mt-1 text-xs text-muted-foreground">
-          Documentation
-        </p>
-      </div>
+    <aside className="flex h-full flex-col">
+
 
       {/* Nav */}
-      <nav className="flex-1 overflow-y-auto px-3 py-4">
+      <nav className="flex-1 overflow-y-auto px-3 py-4 mt-16">
         <div className="space-y-1">
           {items.map((item) => {
             const active = pathname === item.href;
@@ -39,11 +31,11 @@ export default function DocsSidebar({
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={onNavigate} // ✅ magic line
+                onClick={onNavigate}
                 className={clsx(
                   "group relative flex items-center rounded-md px-3 py-2 text-sm transition-all duration-200",
                   active
-                    ? "bg-primary/10 text-foreground"
+                    ? "bg-blue-100 text-foreground"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
                 )}
               >
@@ -51,7 +43,7 @@ export default function DocsSidebar({
                   className={clsx(
                     "absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-r-full transition-all",
                     active
-                      ? "bg-primary opacity-100"
+                      ? "bg-blue-700 opacity-100"
                       : "bg-transparent opacity-0 group-hover:opacity-40"
                   )}
                 />

@@ -31,7 +31,7 @@ export default function BackButton({
       onClick={handleBack}
       aria-label="Go back"
       className={clsx(
-        "inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-muted",
+        "inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-blue-50 cursor-pointer",
         className
       )}
     >

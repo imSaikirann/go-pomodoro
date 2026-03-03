@@ -102,15 +102,7 @@ export const RealityCheck = () => {
           </motion.div>
         </div>
 
-        {/* ================= RESEARCH NOTE ================= */}
-        <div className="mt-12 text-center max-w-3xl mx-auto">
-          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-            Health research has consistently associated prolonged uninterrupted
-            sitting with increased musculoskeletal discomfort and reduced
-            physical activity levels. Smart break patterns can help reduce
-            continuous strain during long work sessions.
-          </p>
-        </div>
+      
       </div>
     </section>
   );

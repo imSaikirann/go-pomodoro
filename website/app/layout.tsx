@@ -39,7 +39,7 @@ export default function RootLayout({
 
         <Navbar/>
         {/* Main content */}
-        <main className="flex-1 font-mono mt-10">
+        <main className="flex-1 font-sans mt-10">
           {children}
         </main>
 

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import DownloadProof from './DownloadProof';
 
 const Hero = () => {
   return (
@@ -62,6 +63,7 @@ const Hero = () => {
             Get started
           </Link>
         </motion.div>
+        <DownloadProof />
       </div>
     </section>
   );

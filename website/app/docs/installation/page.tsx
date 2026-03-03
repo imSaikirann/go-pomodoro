@@ -5,25 +5,24 @@ import BackButton from "@/components/common/BackButton";
 export default function InstallationPage() {
   return (
     <div className="space-y-6 sm:space-y-8">
+      <BackButton />
 
-            <BackButton/>
-      
-      {/* Header — SAME pattern as home */}
+      {/* Header */}
       <div className="space-y-3">
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
           Installation
         </h1>
 
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm sm:text-base text-muted-foreground">
           Get go-pomodoro up and running in seconds.
         </p>
       </div>
 
-      {/* npm section — grouped like home */}
+      {/* npm */}
       <div className="space-y-4">
-        <h2 className="text-lg sm:text-xl font-medium">
+        <p className="text-sm font-medium">
           Install via npm (recommended)
-        </h2>
+        </p>
 
         <CodeBlock code="npm i -g go-pomodoro" />
 
@@ -34,22 +33,11 @@ export default function InstallationPage() {
         <CodeBlock code="pomodoro -v" />
       </div>
 
-      {/* go section — grouped */}
-      <div className="space-y-4">
-        <h2 className="text-lg sm:text-xl font-medium">
-          Install via Go
-        </h2>
 
-        <CodeBlock code="go install github.com/imSaikirann/go-pomodoro@latest" />
+   
 
-        <p className="text-sm text-muted-foreground break-words">
-          Make sure{" "}
-          <span className="font-mono text-foreground">$GOPATH/bin</span>{" "}
-          is in your PATH.
-        </p>
-      </div>
 
-      {/* CTA — unchanged but aligned */}
+      {/* Next step */}
       <div className="rounded-xl border bg-muted/40 p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-1">
           <p className="text-sm font-medium">Next step</p>

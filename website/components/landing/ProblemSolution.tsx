@@ -129,15 +129,7 @@ export const ProblemSolution = () => {
           </motion.div>
         </div>
 
-        {/* ================= RESEARCH NOTE ================= */}
-        <div className="mt-10 text-center max-w-3xl mx-auto">
-          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-            Studies from major health organizations have linked prolonged sitting
-            with increased risk of musculoskeletal strain and reduced metabolic
-            health. go-pomodoro is designed to encourage healthier deep work
-            patterns.
-          </p>
-        </div>
+       
       </div>
     </section>
   );

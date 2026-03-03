@@ -3,190 +3,158 @@ import CodeBlock from "@/components/common/CodeBlock";
 
 export default function UsagePage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-6 sm:space-y-8">
       <BackButton />
 
-      {/* ================= HERO ================= */}
-      <div className="space-y-4">
-        <div className="inline-flex items-center rounded-lg border bg-muted/50 px-3 py-1 text-xs font-medium">
-          Documentation
-        </div>
-
-        <h1 className="text-4xl font-semibold tracking-tight">
+      {/* Header */}
+      <div className="space-y-3">
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
           Usage Guide
         </h1>
 
-        <p className="max-w-2xl text-muted-foreground">
-          Learn how to use <span className="font-medium">go-pomodoro</span> to run
-          intelligent focus sessions, monitor posture, and get AI-powered
-          productivity insights.
+        <p className="text-sm sm:text-base text-muted-foreground">
+          Learn how to use <span className="font-medium">go-pomodoro</span> to
+          run focus sessions, monitor long sitting, and get AI-powered insights.
         </p>
       </div>
 
-      {/* ================= QUICK START ================= */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          Quick start
-        </h2>
+      {/* CLI usage */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">CLI usage</p>
 
-        <div className="rounded-2xl border bg-muted/40 p-6 space-y-4">
-          <p className="text-sm text-muted-foreground">
-            Get started in under 30 seconds.
-          </p>
-
-          <CodeBlock code={`go install github.com/imSaikirann/go-pomodoro@latest`} />
-          <CodeBlock code={`pomodoro start`} />
-        </div>
-      </section>
-
-      {/* ================= HOW IT WORKS ================= */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          How it works
-        </h2>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <FeatureCard
-            title="Structured focus cycles"
-            desc="Automatically runs focus and break cycles based on session length."
-          />
-          <FeatureCard
-            title="Deep work detection"
-            desc="Special deep mode with focus-dip intelligence."
-          />
-          <FeatureCard
-            title="Posture monitoring"
-            desc="Real-time sitting detection with smart reminders."
-          />
-          <FeatureCard
-            title="AI productivity coach"
-            desc="Personalized insights based on your recent sessions."
-          />
-        </div>
-      </section>
-
-      {/* ================= COMMANDS ================= */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          Core commands
-        </h2>
-
-        <CommandBlock
-          title="Start session"
-          code="pomodoro start"
-          desc="Start a default focus session using built-in cycle rules."
+        <CodeBlock
+          code={`pomodoro [flags]
+pomodoro [command]`}
         />
 
-        <CommandBlock
-          title="Custom duration"
-          code="pomodoro start -m 15"
-          desc="Run a focus session with custom minutes."
-        />
-
-        <CommandBlock
-          title="Deep work mode"
-          code="pomodoro start --deep"
-          desc="Distraction-minimized deep focus session."
-        />
-
-        <CommandBlock
-          title="Posture monitor"
-          code="pomodoro monitor"
-          desc="Continuously detects long sitting in real time."
-        />
-
-        <CommandBlock
-          title="Session history"
-          code="pomodoro sessions"
-          desc="View recent focus sessions and performance."
-        />
-
-        <CommandBlock
-          title="AI coach"
-          code="pomodoro coach"
-          desc="Get personalized productivity advice."
-        />
-      </section>
-
-      {/* ================= AI SETUP ================= */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          Enable AI features
-        </h2>
-
-        <div className="rounded-2xl border bg-muted/40 p-6 space-y-5">
-          <p className="text-sm text-muted-foreground">
-            Set your GROQ API key to enable AI coaching and smart break tips.
-          </p>
-
-          <div className="space-y-4">
-            <div>
-              <p className="text-sm font-medium mb-2">
-                Windows (PowerShell)
-              </p>
-              <CodeBlock code={`$env:GROQ_API_KEY="your_api_key_here"`} />
-            </div>
-
-            <div>
-              <p className="text-sm font-medium mb-2">
-                Mac / Linux
-              </p>
-              <CodeBlock code={`export GROQ_API_KEY="your_api_key_here"`} />
-            </div>
-          </div>
-
-          <div className="rounded-lg border bg-background p-4 text-xs text-muted-foreground">
-            After setting the key, restart your terminal.
-          </div>
-        </div>
-      </section>
-
-      {/* ================= BREAK RULES ================= */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          Break rules
-        </h2>
-
-        <div className="rounded-2xl border bg-muted/40 p-6">
-          <pre className="text-sm font-mono leading-relaxed">
-{`<10 min focus   → no break
-10–30 min        → 5 min break
-30–60 min        → 8–10 min break
-60+ min          → 15+ min break`}
-          </pre>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-/* ================= SMALL COMPONENTS ================= */
-
-function FeatureCard({ title, desc }: { title: string; desc: string }) {
-  return (
-    <div className="rounded-xl border bg-background p-5 space-y-2">
-      <h3 className="font-medium">{title}</h3>
-      <p className="text-sm text-muted-foreground">{desc}</p>
-    </div>
-  );
-}
-
-function CommandBlock({
-  title,
-  code,
-  desc,
-}: {
-  title: string;
-  code: string;
-  desc: string;
-}) {
-  return (
-    <div className="space-y-3 rounded-2xl border bg-muted/40 p-5">
-      <div className="flex items-center justify-between">
-        <h3 className="font-medium">{title}</h3>
+        <p className="text-sm text-muted-foreground">
+          Use the commands below to control your focus workflow directly from
+          the terminal.
+        </p>
       </div>
-      <CodeBlock code={code} />
-      <p className="text-sm text-muted-foreground">{desc}</p>
+
+      {/* Start */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">Start a focus session</p>
+
+        <CodeBlock code="pomodoro start" />
+
+        <p className="text-sm text-muted-foreground">
+          Starts a standard focus timer using built-in break and cycle rules.
+        </p>
+
+        <CodeBlock code="pomodoro start -m 25" />
+
+        <p className="text-sm text-muted-foreground">
+          Runs a session with a custom focus duration in minutes.
+        </p>
+      </div>
+
+      {/* Deep */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">Deep work mode</p>
+
+        <CodeBlock code="pomodoro deep" />
+
+        <p className="text-sm text-muted-foreground">
+          Starts a distraction-minimized deep work session for longer,
+          uninterrupted focus.
+        </p>
+      </div>
+
+      {/* Monitor */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">Monitor long sitting</p>
+
+        <CodeBlock code="pomodoro monitor" />
+
+        <p className="text-sm text-muted-foreground">
+          Continuously tracks activity and alerts you when prolonged sitting is
+          detected.
+        </p>
+      </div>
+
+      {/* Sessions */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">View session history</p>
+
+        <CodeBlock code="pomodoro sessions" />
+
+        <p className="text-sm text-muted-foreground">
+          Displays recent focus sessions and basic productivity insights.
+        </p>
+      </div>
+
+      {/* Coach */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">AI productivity coach</p>
+
+        <CodeBlock code="pomodoro coach" />
+
+        <p className="text-sm text-muted-foreground">
+          Generates personalized focus recommendations based on your recent
+          sessions.
+        </p>
+      </div>
+
+      {/* Update */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">Update the CLI</p>
+
+        <CodeBlock code="pomodoro update" />
+
+        <p className="text-sm text-muted-foreground">
+          Updates go-pomodoro to the latest available version.
+        </p>
+      </div>
+
+      {/* Version */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">Check version</p>
+
+        <CodeBlock code="pomodoro version" />
+
+        <p className="text-sm text-muted-foreground">
+          Prints the currently installed version.
+        </p>
+      </div>
+
+      {/* AI setup */}
+      <div className="space-y-4">
+        <p className="text-sm font-medium">Enable AI features (Groq)</p>
+
+        <p className="text-sm text-muted-foreground">
+          To enable AI coaching and smart break suggestions, set your GROQ API
+          key as an environment variable.
+        </p>
+
+        <div className="space-y-3">
+          <p className="text-xs text-muted-foreground">
+            macOS / Linux
+          </p>
+          <CodeBlock code={`export GROQ_API_KEY="your_api_key_here"`} />
+
+          <p className="text-xs text-muted-foreground">
+            Windows (PowerShell)
+          </p>
+          <CodeBlock code={`$env:GROQ_API_KEY="your_api_key_here"`} />
+        </div>
+
+        <p className="text-xs text-muted-foreground">
+          Restart your terminal after setting the key.
+        </p>
+      </div>
+
+      {/* Break explanation */}
+      <div className="space-y-3">
+        <p className="text-sm font-medium">How breaks are calculated</p>
+
+        <p className="text-sm text-muted-foreground">
+          Break duration and focus cycles automatically adjust based on your
+          session length. Short sessions keep breaks minimal, while longer deep
+          work sessions receive longer recovery periods to reduce fatigue.
+        </p>
+      </div>
     </div>
   );
 }

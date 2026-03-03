@@ -39,7 +39,25 @@ export default function DocsHomePage() {
         </p>
 
         <CodeBlock code="pomodoro -v" />
+
+            <div className="rounded-xl border bg-muted/40 p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="space-y-1">
+          <p className="text-sm font-medium">Next step</p>
+          <p className="text-xs text-muted-foreground">
+            Learn how to start your first focus session.
+          </p>
+        </div>
+
+        <Link
+          href="/docs/usage"
+          className="inline-flex w-full sm:w-auto items-center justify-center rounded-md border px-4 py-2 text-sm font-medium hover:bg-muted transition"
+        >
+          Go to Usage →
+        </Link>
       </div>
+      </div>
+
+      
 
   );
 }
