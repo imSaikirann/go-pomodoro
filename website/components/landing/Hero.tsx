@@ -10,7 +10,6 @@ export default function Hero() {
 
       <h1 className="max-w-3xl text-5xl font-semibold leading-[1.08] tracking-tight text-black sm:text-6xl md:text-7xl">
         Focus sessions
-        <span className="ml-2 inline-block h-[0.95em] w-2 translate-y-1 bg-neutral-500" />
         <br />
         <span className="text-neutral-700">without the noise.</span>
       </h1>
