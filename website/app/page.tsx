@@ -1,175 +1,201 @@
-import { ArrowRight, Brain, Clock3, Database, PlayCircle, TerminalSquare } from "lucide-react";
-import CodeBlock from "@/components/common/CodeBlock";
+import {
+  Activity,
+  ArrowDown,
+  Brain,
+  CheckCircle2,
+  Clock3,
+  Database,
+  PauseCircle,
+  PlayCircle,
+  Terminal,
+} from "lucide-react";
 import { siteLinks } from "@/lib/site-links";
-
-const commandFlow = `pomodoro start -m 25
-pomodoro status -w
-pomodoro pause
-pomodoro resume
-pomodoro stop`;
-
-const commands = [
-  "pomodoro start",
-  "pomodoro start -m 45",
-  "pomodoro start -m 60 -d",
-  "pomodoro status -w",
-  "pomodoro sessions",
-  "pomodoro coach",
-];
 
 const features = [
   {
     icon: PlayCircle,
-    title: "Background timer",
-    text: "Start a session and keep using your terminal instead of staring at a blocked process.",
+    title: "Background sessions",
+    text: "Start a timer and keep using your terminal. The session keeps running behind your work.",
   },
   {
-    icon: TerminalSquare,
-    title: "Live CLI status",
-    text: "Watch focus time, break state, cycles, and remaining time with one command.",
-  },
-  {
-    icon: Brain,
-    title: "Optional AI tips",
-    text: "Add GROQ_API_KEY when you want smarter break guidance and coach output.",
+    icon: Clock3,
+    title: "Live status",
+    text: "Check phase, time left, cycles, breaks, and progress with one readable command.",
   },
   {
     icon: Database,
-    title: "Local session history",
-    text: "Recent sessions live in SQLite so the app can show history and coaching context.",
+    title: "Local history",
+    text: "Completed sessions are saved locally, so your focus record stays on your machine.",
+  },
+  {
+    icon: Brain,
+    title: "Optional coaching",
+    text: "Add an API key when you want AI break tips. Ignore it when you want a plain timer.",
   },
 ];
 
+const benefits = [
+  "No browser tab to babysit.",
+  "No blocked terminal while a timer runs.",
+  "No account, dashboard, or cloud sync.",
+  "No complicated workflow to remember.",
+];
+
+const commands = [
+  "pomodoro start",
+  "pomodoro status -w",
+  "pomodoro pause",
+  "pomodoro resume",
+  "pomodoro sessions",
+];
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mx-auto mb-4 w-fit rounded-full border border-neutral-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
+      {children}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
-    <div className="pb-16">
-      <section className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:gap-8 sm:px-6 sm:py-10 lg:grid-cols-[1.05fr,0.95fr] lg:items-center lg:gap-10 lg:py-16">
-        <div className="space-y-5">
-          <div className="inline-flex max-w-full rounded-full border border-stone-300 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-700 sm:text-xs">
-            CLI timer for deep work
-          </div>
-
-          <div className="space-y-3">
-            <h1 className="max-w-xl text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-              A cleaner Pomodoro workflow for people who live in the terminal.
-            </h1>
-            <p className="max-w-xl text-sm leading-6 text-slate-600 sm:text-base sm:leading-7 lg:text-lg">
-              Run focus sessions in the background, check live status on demand, and use AI break tips only when you want them.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a
-              href={siteLinks.installation}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-teal-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-800 sm:w-auto"
-            >
-              Install the CLI
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href={siteLinks.commands}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full items-center justify-center rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:w-auto"
-            >
-              See commands
-            </a>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-stone-300 bg-white p-4">
-              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Timer</div>
-              <div className="mt-2 text-sm font-medium text-slate-900">Runs in background</div>
-            </div>
-            <div className="rounded-2xl border border-stone-300 bg-white p-4">
-              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Status</div>
-              <div className="mt-2 text-sm font-medium text-slate-900">Cycles and breaks visible</div>
-            </div>
-            <div className="rounded-2xl border border-stone-300 bg-white p-4">
-              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">AI</div>
-              <div className="mt-2 text-sm font-medium text-slate-900">Optional break tips</div>
-            </div>
-          </div>
+    <div className="bg-white text-black">
+      <section className="mx-auto flex min-h-[calc(100vh-60px)] max-w-4xl flex-col items-center justify-center px-5 pb-12 pt-24 text-center">
+        <div className="mb-10 inline-flex rounded border border-neutral-300 bg-white px-4 py-2 font-mono text-[11px] uppercase tracking-[0.28em] text-neutral-500">
+          Open source <span className="px-3 text-neutral-300">-</span> CLI <span className="px-3 text-neutral-300">-</span> Go
         </div>
 
-        <div className="space-y-4 lg:pl-2">
-          <CodeBlock code={commandFlow} />
-          <div className="rounded-3xl border border-stone-300 bg-white p-5">
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
-              <Clock3 className="h-4 w-4 text-teal-700" />
-              Live watch output
-            </div>
-            <pre className="mt-4 overflow-x-auto rounded-2xl bg-stone-950 p-4 text-[13px] leading-6 text-stone-100 sm:text-sm">
-              <code>{`Focus | 24:41 | cycle 1/2 | breaks left 2 | #####--------------- |  21%
-Paused | 10:12 | cycle 1/2 | breaks left 2 | ##########---------- |  58%
-Break | 04:32 | cycle 1/2 | breaks left 1 | ####---------------- |  18%`}</code>
-            </pre>
-          </div>
+        <h1 className="max-w-3xl text-[44px] font-semibold leading-[1.08] tracking-[-0.04em] sm:text-[64px]">
+          Focus sessions
+          <span className="ml-2 inline-block h-[0.95em] w-2 translate-y-1 bg-neutral-300" />
+          <br />
+          <span className="text-neutral-400">without the noise.</span>
+        </h1>
+
+        <p className="mt-8 max-w-2xl text-lg leading-9 text-neutral-700">
+          A Pomodoro timer that lives in your terminal, runs in the background, and stays out of your way.
+        </p>
+
+        <div className="mt-12 flex w-full max-w-xl flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href={siteLinks.installation}
+            className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-200 bg-white px-6 py-3 font-mono text-sm font-semibold text-neutral-300 transition hover:border-black hover:text-black sm:w-60"
+          >
+            npm i -g go-pomodoro
+          </a>
+          <a
+            href="https://github.com/imSaikirann/go-pomodoro"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-200 bg-white px-6 py-3 font-mono text-sm font-semibold text-neutral-300 transition hover:border-black hover:text-black sm:w-40"
+          >
+            View on GitHub
+          </a>
         </div>
+
+        <a
+          href="#problem"
+          className="mt-8 inline-flex h-11 w-11 items-center justify-center rounded-full bg-neutral-700 text-white shadow-lg transition hover:bg-black"
+          aria-label="Scroll to problem section"
+        >
+          <ArrowDown className="h-5 w-5" />
+        </a>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-10">
-        <div className="mb-6">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
-            What the CLI does well
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            The product should feel predictable, readable, and useful without over-design.
-          </p>
-        </div>
+      <section id="problem" className="border-t border-neutral-200 px-5 py-24 text-center">
+        <SectionLabel>Problem</SectionLabel>
+        <Activity className="mx-auto h-20 w-20" />
+        <h2 className="mx-auto mt-8 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+          Most timers interrupt the focus they are supposed to protect.
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-neutral-600">
+          Browser timers pull you into another tab. App timers add another window. Many CLI timers block your shell. go-pomodoro keeps the timer useful and quiet.
+        </p>
+      </section>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {features.map((feature) => {
-            const Icon = feature.icon;
-            return (
-              <div key={feature.title} className="rounded-3xl border border-stone-300 bg-white p-5 sm:p-6">
-                <div className="inline-flex rounded-2xl bg-stone-100 p-3">
-                  <Icon className="h-5 w-5 text-teal-700" />
+      <section id="features" className="border-t border-neutral-200 px-5 py-24">
+        <div className="mx-auto max-w-6xl text-center">
+          <SectionLabel>Features</SectionLabel>
+          <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Everything you need, nothing loud.</h2>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <div key={feature.title} className="rounded-2xl border border-neutral-200 bg-white p-6 text-center">
+                  <Icon className="mx-auto h-16 w-16" />
+                  <h3 className="mt-6 text-lg font-semibold">{feature.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-neutral-600">{feature.text}</p>
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-slate-950">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{feature.text}</p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-[0.9fr,1.1fr] lg:py-10">
-        <div className="rounded-3xl border border-stone-300 bg-white p-6">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-950">Command surface</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-600">
-            Cobra gives you built-in help, flags, and discoverability.
-          </p>
-          <div className="mt-5 space-y-3">
+      <section id="benefits" className="border-t border-neutral-200 px-5 py-24 text-center">
+        <SectionLabel>Benefits</SectionLabel>
+        <PauseCircle className="mx-auto h-20 w-20" />
+        <h2 className="mx-auto mt-8 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+          Less setup. Less switching. More work finished.
+        </h2>
+        <div className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
+          {benefits.map((benefit) => (
+            <div key={benefit} className="flex items-center justify-center gap-3 rounded-2xl border border-neutral-200 p-5 text-sm font-medium">
+              <CheckCircle2 className="h-6 w-6 shrink-0" />
+              <span>{benefit}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="commands" className="border-t border-neutral-200 px-5 py-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <SectionLabel>Commands</SectionLabel>
+          <Terminal className="mx-auto h-20 w-20" />
+          <h2 className="mt-8 text-4xl font-semibold tracking-tight sm:text-5xl">Small command surface.</h2>
+          <div className="mt-12 overflow-hidden rounded-2xl border border-neutral-200 text-left">
             {commands.map((command) => (
-              <div
-                key={command}
-                className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 font-mono text-sm text-slate-800"
-              >
+              <div key={command} className="border-b border-neutral-200 px-5 py-4 font-mono text-sm last:border-b-0">
                 {command}
               </div>
             ))}
           </div>
+          <a
+            href={siteLinks.commands}
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-black px-7 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
+          >
+            View command docs
+          </a>
         </div>
+      </section>
 
-        <div className="rounded-3xl border border-stone-300 bg-[#f1ece1] p-6">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-950">Setup in one minute</h2>
-          <div className="mt-5 grid gap-4">
-            <div className="rounded-2xl border border-stone-300 bg-white p-4">
-              <div className="text-sm font-semibold text-slate-900">1. Install</div>
-              <div className="mt-2 font-mono text-sm text-slate-700">npm i -g go-pomodoro</div>
-            </div>
-            <div className="rounded-2xl border border-stone-300 bg-white p-4">
-              <div className="text-sm font-semibold text-slate-900">2. Start a session</div>
-              <div className="mt-2 font-mono text-sm text-slate-700">pomodoro start</div>
-            </div>
-            <div className="rounded-2xl border border-stone-300 bg-white p-4">
-              <div className="text-sm font-semibold text-slate-900">3. Enable AI later if you want</div>
-              <div className="mt-2 font-mono text-sm text-slate-700">setx GROQ_API_KEY &quot;your_api_key_here&quot;</div>
-            </div>
-          </div>
+      <section className="border-t border-neutral-200 px-5 py-24 text-center text-black">
+        <h2 className="mx-auto max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.04em] text-black sm:text-5xl">
+          Start your first
+          <br />
+          focus session now.
+        </h2>
+        <p className="mx-auto mt-7 max-w-xl text-base leading-7 text-black">
+          Open your terminal. One command is all it takes.
+        </p>
+        <div className="mx-auto mt-10 inline-flex rounded-lg border border-neutral-200 bg-neutral-100 px-7 py-4 font-mono text-sm font-semibold text-black">
+          npm i -g go-pomodoro
+        </div>
+        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <a
+            href={siteLinks.docs}
+            className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-7 py-3 font-mono text-sm font-semibold text-black transition hover:border-black"
+          >
+            Read the docs
+          </a>
+          <a
+            href="https://github.com/imSaikirann/go-pomodoro"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-7 py-3 font-mono text-sm font-semibold text-black transition hover:border-black"
+          >
+            View source &gt;
+          </a>
         </div>
       </section>
     </div>

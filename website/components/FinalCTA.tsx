@@ -34,8 +34,6 @@ export default function FinalCTA() {
           <div className="flex flex-col items-center justify-center gap-3 pt-2 sm:flex-row">
             <a
               href={siteLinks.docs}
-              target="_blank"
-              rel="noreferrer"
               className="inline-flex items-center rounded-xl bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-black/90"
             >
               Get started

@@ -1,8 +1,8 @@
 const mintlifyDocsUrl =
-  process.env.NEXT_PUBLIC_MINTLIFY_DOCS_URL || "https://your-mintlify-docs-url.com";
+  process.env.NEXT_PUBLIC_MINTLIFY_DOCS_URL || "https://imsaikirann.mintlify.app";
 
 export const siteLinks = {
-  docs: mintlifyDocsUrl,
+  docs: `${mintlifyDocsUrl}/introduction`,
   installation: `${mintlifyDocsUrl}/installation`,
   usage: `${mintlifyDocsUrl}/usage`,
   commands: `${mintlifyDocsUrl}/commands`,

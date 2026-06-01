@@ -1,124 +1,57 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { ArrowRight, Brain, Sparkles, TerminalSquare } from 'lucide-react';
-import DownloadProof from './DownloadProof';
-import { siteLinks } from '@/lib/site-links';
-
-const Hero = () => {
+export default function Hero() {
   return (
-    <section className="relative overflow-hidden px-4 pb-16 pt-20 sm:px-6 lg:px-8 lg:pt-24">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(191,219,254,0.55),transparent_36%),radial-gradient(circle_at_80%_20%,rgba(186,230,253,0.35),transparent_28%)]" />
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
-        <div className="text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/70 px-4 py-2 text-sm backdrop-blur"
-          >
-            <Sparkles className="h-4 w-4 text-blue-600" />
-            Background timer with AI guidance
-          </motion.div>
+    <section className="px-[6vw] pt-24 pb-20 text-center max-w-[820px] mx-auto">
+      <div className="inline-block font-mono text-[11px] tracking-[0.12em] uppercase text-[#888] border border-[#e0e0e0] px-[14px] py-[5px] rounded mb-9">
+        Open source &nbsp;·&nbsp; CLI &nbsp;·&nbsp; Go
+      </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mt-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
-          >
-            Run your focus timer.
-            <br />
-            <span className="text-blue-600">Keep your terminal free.</span>
-          </motion.h1>
+      <h1 className="text-[clamp(36px,6vw,68px)] font-semibold leading-[1.08] tracking-[-0.04em] mb-6">
+        Focus sessions
+        <br />
+        <span className="text-[#aaa]">without the noise.</span>
+      </h1>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="mt-6 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg lg:mx-0"
-          >
-            go-pomodoro is a Cobra-powered CLI with background sessions, live status,
-            automatic cycles and breaks, session history, and AI-generated break tips.
-          </motion.p>
+      <p className="text-lg font-light text-[#555] max-w-[520px] mx-auto leading-[1.7] mb-11">
+        A Pomodoro timer that lives in your terminal, runs in the background,
+        and stays out of your way.
+      </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-10 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start"
-          >
-            <a
-              href={siteLinks.docs}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:bg-blue-700 hover:shadow-xl"
-            >
-              Read docs
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href={siteLinks.commands}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-8 py-3 font-semibold text-slate-700 transition-all duration-200 hover:border-slate-400 hover:bg-slate-50"
-            >
-              See commands
-            </a>
-          </motion.div>
+      <div className="flex gap-3 justify-center flex-wrap mb-0">
+        <button className="bg-[#0a0a0a] text-white font-mono text-sm font-medium px-7 py-3.5 rounded-lg hover:opacity-70 transition-opacity border-none cursor-pointer">
+          npm i -g go-pomodoro &nbsp;↗
+        </button>
+        <button className="bg-white text-[#0a0a0a] font-mono text-sm font-medium px-7 py-3.5 rounded-lg border border-[#ddd] hover:border-[#aaa] transition-colors cursor-pointer">
+          View on GitHub
+        </button>
+      </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white/80 p-4 text-left shadow-sm">
-              <div className="flex items-center gap-2 text-sm font-medium text-slate-900">
-                <TerminalSquare className="h-4 w-4 text-sky-600" />
-                Live CLI status
-              </div>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                Watch focus time, cycles, and breaks with <code>pomodoro status -w</code>.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-white/80 p-4 text-left shadow-sm">
-              <div className="flex items-center gap-2 text-sm font-medium text-slate-900">
-                <Brain className="h-4 w-4 text-sky-600" />
-                Optional AI layer
-              </div>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                Add <code>GROQ_API_KEY</code> for AI break notifications and coaching.
-              </p>
-            </div>
-          </div>
+      {/* Terminal */}
+      <div className="max-w-[640px] mx-auto mt-14 bg-[#0a0a0a] rounded-xl overflow-hidden border border-[#1f1f1f]">
+        <div className="px-4 py-3 flex gap-1.5 items-center border-b border-[#1f1f1f]">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] inline-block" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] inline-block" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f] inline-block" />
+          <span className="font-mono text-[11px] text-[#555] ml-2">~/workspace</span>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          className="rounded-[2rem] border border-slate-200 bg-slate-950 p-5 text-left text-slate-100 shadow-2xl"
-        >
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-slate-400">
-            <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            Live terminal flow
+        <div className="p-6 font-mono text-[13px] leading-loose text-left">
+          <div>
+            <span className="text-[#555]">$ </span>
+            <span className="text-white">pomodoro start -m 25</span>
           </div>
-          <pre className="mt-4 overflow-x-auto text-sm leading-7 text-slate-200">
-            <code>{`$ pomodoro start -m 25
-Pomodoro started in background
-Run \`pomodoro status -w\` to watch progress
-
-$ pomodoro status -w
-Focus | 24:41 | cycle 1/2 | breaks left 2 | ###----------------- |  1%
-
-$ pomodoro pause
-Session paused
-
-$ pomodoro resume
-Session resumed`}</code>
-          </pre>
-          <div className="mt-4">
-            <DownloadProof />
+          <div className="text-[#27c93f] text-xs">✓ Session started · 25 min · running in background</div>
+          <div className="mt-2">
+            <span className="text-[#555]">$ </span>
+            <span className="text-white">pomodoro status -w</span>
           </div>
-        </motion.div>
+          <div className="text-[#ffbd2e] text-xs">Focus · 18:42 left · cycle 1/4 · ████████░░░░░░░░░░░░ 43%</div>
+          <div className="mt-2 text-[#444] text-xs"># your terminal is still yours</div>
+          <div>
+            <span className="text-[#555]">$ </span>
+            <span className="text-white">git commit -m &quot;ship it&quot;</span>
+          </div>
+          <div className="text-[#27c93f] text-xs">✓ 3 files changed, 42 insertions</div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
