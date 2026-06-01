@@ -3,7 +3,7 @@
   "name": "go-pomodoro",
   "theme": "mint",
   "colors": {
-    "primary": "#16A34A"
+    "primary": "#f1f1f1"
   },
   "navigation": {
     "tabs": [
