@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { siteLinks } from "@/lib/site-links";
 
 export default function FinalCTA() {
   return (
@@ -32,12 +32,14 @@ export default function FinalCTA() {
 
           {/* buttons */}
           <div className="flex flex-col items-center justify-center gap-3 pt-2 sm:flex-row">
-            <Link
-              href="/docs"
+            <a
+              href={siteLinks.docs}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center rounded-xl bg-black px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-black/90"
             >
               Get started
-            </Link>
+            </a>
 
           
           </div>

@@ -1,25 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/common/Footer";
 import { Analytics } from "@vercel/analytics/next";
-import { Bricolage_Grotesque } from "next/font/google";
 import Navbar from "@/components/Navbar";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
-  variable: "--font-bricolage",
-  weight: ["400", "500", "600", "700"],
-});
 export const metadata: Metadata = {
   title: "go-pomodoro",
   description:
@@ -33,17 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased min-h-screen`}
-      >
-
-        <Navbar/>
-        {/* Main content */}
-        <main className="flex-1 font-sans mt-10">
-          {children}
-        </main>
-
-        <Footer />
+      <body className="min-h-screen antialiased text-slate-900">
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1 font-sans">{children}</main>
+          <Footer />
+        </div>
         <Analytics />
       </body>
     </html>

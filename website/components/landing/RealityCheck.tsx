@@ -4,105 +4,91 @@ import { motion } from 'framer-motion';
 
 export const RealityCheck = () => {
   const shouldUse = [
-    'You spend long hours sitting at your desk',
-    'You often lose track of time while working or studying',
-    'You feel neck, shoulder, or lower back stiffness',
-    'You forget to take breaks during focused sessions',
-    'You want healthier, more sustainable work habits',
+    'You lose track of time when coding or studying',
+    'You want visible cycle and break status in the CLI',
+    'You prefer keyboard-first tools over productivity dashboards',
+    'You want better break nudges without leaving the terminal',
   ];
 
   const maybeNot = [
-    'You rarely sit for extended periods',
-    'You already follow a strict break routine manually',
-    'You prefer completely hands-off productivity tools',
-    'You are only looking for a simple timer',
+    'You only want a plain countdown with no workflow features',
+    'You dislike notifications entirely',
+    'You already have a break system that feels perfect',
+    'You do not care about session history or coaching',
   ];
 
   return (
-    <section className="relative px-4 py-24 sm:px-6 lg:px-8">
+    <section className="relative px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        {/* ================= HEADER ================= */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            A quick reality check
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
+            Quick check
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            This tool is best when you want focus support, not just a stopwatch.
           </h2>
-
-          <p className="mt-5 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-            Many people don’t realize how long they stay seated until fatigue,
-            stiffness, and focus drop start to appear. If long sitting is part
-            of your daily routine, your body and productivity are already being
-            affected.
+          <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
+            It works best for people who want a useful CLI routine around focus and recovery.
           </p>
         </div>
 
-        {/* ================= GRID ================= */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* SHOULD USE */}
+        <div className="grid gap-5 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
-            className="rounded-2xl p-8
-              bg-blue-50/60 dark:bg-blue-950/20
-              border border-blue-200/60 dark:border-blue-900/40
-              shadow-sm"
+            className="rounded-[1.75rem] border border-sky-200 bg-[linear-gradient(180deg,#f0f9ff,#eff6ff)] p-6 shadow-sm sm:p-8"
           >
             <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                This will help you if…
+              <h3 className="text-xl font-semibold text-slate-950">
+                A good fit if...
               </h3>
-              <p className="text-sm text-blue-700/80 dark:text-blue-300/80 mt-1">
-                Long sitting is part of your daily life
+              <p className="mt-1 text-sm text-sky-700">
+                You want a more intentional terminal workflow
               </p>
             </div>
 
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {shouldUse.map((item, i) => (
                 <li
                   key={i}
-                  className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"
+                  className="rounded-2xl border border-sky-100 bg-white/70 px-4 py-3 text-sm leading-6 text-slate-700"
                 >
-                  ✓ {item}
+                  {item}
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* MAYBE NOT */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.05 }}
-            className="rounded-2xl p-8
-              bg-white dark:bg-gray-900
-              border border-gray-200 dark:border-gray-800
-              shadow-sm"
+            className="rounded-[1.75rem] border border-stone-200 bg-white/90 p-6 shadow-sm sm:p-8"
           >
             <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                You may not need this if…
+              <h3 className="text-xl font-semibold text-slate-950">
+                Maybe skip it if...
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
-                Keeping expectations clear
+              <p className="mt-1 text-sm text-slate-500">
+                Your needs are much simpler
               </p>
             </div>
 
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {maybeNot.map((item, i) => (
                 <li
                   key={i}
-                  className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  className="rounded-2xl border border-stone-100 bg-stone-50 px-4 py-3 text-sm leading-6 text-slate-600"
                 >
-                  — {item}
+                  {item}
                 </li>
               ))}
             </ul>
           </motion.div>
         </div>
-
-      
       </div>
     </section>
   );

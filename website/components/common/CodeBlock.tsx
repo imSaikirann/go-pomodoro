@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
-import clsx from "clsx";
 
 export default function CodeBlock({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
@@ -16,59 +15,23 @@ export default function CodeBlock({ code }: { code: string }) {
   };
 
   return (
-    <div className="relative group">
-      {/* code surface */}
-      <pre
-        className="
-          overflow-x-auto rounded-xl
-          bg-blue-50/70 dark:bg-blue-950/30
-          border border-blue-100 dark:border-blue-900/40
-          p-4 pr-14
-          text-[13px] sm:text-sm
-          leading-relaxed
-          backdrop-blur-sm
-        "
-      >
-        <code className="whitespace-pre text-gray-800 dark:text-gray-200">
-          {code}
-        </code>
+    <div className="overflow-hidden rounded-2xl border border-stone-300 bg-[#1f2937] text-stone-100 shadow-sm">
+      <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
+          Command
+        </span>
+        <button
+          onClick={handleCopy}
+          className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-stone-200 transition hover:bg-white/10"
+          aria-label="Copy code"
+        >
+          {copied ? <Check size={14} /> : <Copy size={14} />}
+          <span>{copied ? "Copied" : "Copy"}</span>
+        </button>
+      </div>
+      <pre className="overflow-x-auto p-4 text-[13px] leading-6 sm:text-sm">
+        <code className="whitespace-pre">{code}</code>
       </pre>
-
-      {/* copy button */}
-      <button
-        onClick={handleCopy}
-        className={clsx(
-          `
-          absolute right-2 top-2
-          inline-flex items-center gap-1
-          cursor-pointer
-          rounded-md border
-          bg-white/90 dark:bg-gray-900/90
-          border-gray-200 dark:border-gray-700
-          px-2.5 py-1.5
-          text-xs font-medium
-          backdrop-blur
-          transition-all duration-200
-          hover:border-blue-200 dark:hover:border-blue-700
-          hover:text-blue-600 dark:hover:text-blue-400
-          `,
-          "opacity-100 md:opacity-0 md:group-hover:opacity-100",
-          copied && "opacity-100"
-        )}
-        aria-label="Copy code"
-      >
-        {copied ? (
-          <>
-            <Check size={14} className="text-blue-600" />
-            <span className="hidden sm:inline">Copied</span>
-          </>
-        ) : (
-          <>
-            <Copy size={14} />
-            <span className="hidden sm:inline">Copy</span>
-          </>
-        )}
-      </button>
     </div>
   );
 }

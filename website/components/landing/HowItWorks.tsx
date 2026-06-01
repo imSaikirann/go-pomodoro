@@ -5,34 +5,35 @@ import { motion } from 'framer-motion';
 export const HowItWorks = () => {
   const steps = [
     {
-      title: 'Start from your terminal',
-      desc: 'Install and launch a deep work session instantly using the go-pomodoro CLI.',
+      title: 'Start a session',
+      desc: 'Launch the timer from the CLI and immediately get your shell back.',
     },
     {
-      title: 'AI observes your focus patterns',
-      desc: 'Your sessions, breaks, and sitting behavior are analyzed in real time.',
+      title: 'Check status when you want',
+      desc: 'Use the status command to see focus, break, cycles, and remaining time.',
     },
     {
-      title: 'Get smarter every session',
-      desc: 'Receive adaptive break suggestions and coaching that improves your deep work.',
+      title: 'Let breaks guide recovery',
+      desc: 'Use built-in tips by default, or enable AI for more personalized break prompts.',
     },
   ];
 
   return (
-    <section className="relative px-4 py-24 sm:px-6 lg:px-8">
+    <section className="relative px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            How go-pomodoro works
+        <div className="mb-10 text-center sm:mb-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
+            How it works
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            A simpler loop for deep work.
           </h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-            Three steps between you and distraction-free deep work.
+          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+            Three small actions, no heavy dashboard required.
           </p>
         </div>
 
-        {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-5 md:grid-cols-3">
           {steps.map((step, i) => (
             <motion.div
               key={i}
@@ -40,22 +41,17 @@ export const HowItWorks = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-2xl p-8
-                bg-white/70 dark:bg-gray-900/70
-                backdrop-blur-xl
-                border border-gray-200/60 dark:border-gray-800/60
-                shadow-sm hover:shadow-xl
-                transition-all duration-300"
+              className="rounded-[1.75rem] border border-stone-200 bg-white/85 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:p-8"
             >
-              <div className="text-3xl font-bold text-blue-600 mb-4">
+              <div className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">
                 0{i + 1}
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              <h3 className="mb-2 text-lg font-semibold text-slate-950">
                 {step.title}
               </h3>
 
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-sm leading-6 text-slate-600">
                 {step.desc}
               </p>
             </motion.div>

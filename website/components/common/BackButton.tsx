@@ -7,18 +7,17 @@ import clsx from "clsx";
 type BackButtonProps = {
   label?: string;
   className?: string;
-  fallbackHref?: string; // optional: if no history
+  fallbackHref?: string;
 };
 
 export default function BackButton({
-  label,
+  label = "Back",
   className,
   fallbackHref = "/docs",
 }: BackButtonProps) {
   const router = useRouter();
 
   const handleBack = () => {
-    // if user came directly (no history), fallback
     if (window.history.length <= 1) {
       router.push(fallbackHref);
       return;
@@ -31,12 +30,12 @@ export default function BackButton({
       onClick={handleBack}
       aria-label="Go back"
       className={clsx(
-        "inline-flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-blue-50 cursor-pointer",
+        "inline-flex items-center gap-2 rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-teal-300 hover:text-teal-700",
         className
       )}
     >
       <ArrowLeft size={16} />
-      {label && <span>{label}</span>}
+      <span>{label}</span>
     </button>
   );
 }

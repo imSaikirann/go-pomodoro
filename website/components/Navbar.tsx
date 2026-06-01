@@ -2,104 +2,105 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { Github, Menu, X } from 'lucide-react';
+import { siteLinks } from '@/lib/site-links';
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: siteLinks.docs, label: 'Docs' },
+  { href: siteLinks.commands, label: 'Commands' },
+];
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+    <header className="sticky top-0 z-50 border-b border-stone-300/80 bg-[#faf7f1]/95 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <Link href="/" className="flex items-center gap-3">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-teal-700 text-sm font-bold text-white">
+            gp
+          </span>
+          <div className="min-w-0">
+            <div className="truncate text-sm font-semibold tracking-tight text-slate-900 sm:text-base">
+              go-pomodoro
+            </div>
+            <div className="hidden text-xs text-slate-500 sm:block">
+              Background focus timer for the CLI
+            </div>
+          </div>
+        </Link>
+
+        <nav className="hidden items-center gap-1 md:flex">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+              className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-white hover:text-slate-950"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-3 md:flex">
+          <a
+            href="https://github.com/imSaikirann/go-pomodoro"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 bg-white text-slate-700 transition hover:border-teal-300 hover:text-teal-700"
+            aria-label="GitHub repository"
           >
-            <Link
-              href="/"
-              className="flex items-center gap-2 font-bold text-xl tracking-tight text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              {/* <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                <span className="text-white font-bold"></span>
-              </div> */}
-              <span className=" inline text-blue-700">Go-Pomodoro</span>
-            </Link>
-          </motion.div>
-
-          <motion.nav
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="hidden md:flex items-center gap-8"
+            <Github className="h-5 w-5" />
+          </a>
+          <a
+            href={siteLinks.installation}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-teal-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-800"
           >
-          
-          </motion.nav>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center gap-3"
-          >
-            <motion.a
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden sm:inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="GitHub repository"
-            >
-              <Github className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-            </motion.a>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden sm:inline-flex items-center rounded-lg bg-blue-600 hover:bg-blue-700 px-6 py-2 text-sm font-semibold text-white transition-colors shadow-md hover:shadow-lg"
-            >
-              Get Started
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            >
-              {mobileOpen ? (
-                <X className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-              ) : (
-                <Menu className="h-5 w-5 text-gray-700 dark:text-gray-300" />
-              )}
-            </motion.button>
-          </motion.div>
+            Install
+          </a>
         </div>
 
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-gray-200 dark:border-gray-800 py-4 space-y-3"
-          >
-          
-            <motion.button
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="w-full mt-4 inline-flex items-center justify-center rounded-lg bg-blue-600 hover:bg-blue-700 px-6 py-2 text-sm font-semibold text-white transition-colors"
-            >
-              Get Started
-            </motion.button>
-          </motion.div>
-        )}
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 bg-white text-slate-700 md:hidden"
+          aria-label="Toggle navigation"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      {open && (
+        <div className="border-t border-stone-300 bg-[#faf7f1] md:hidden">
+          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 sm:px-6">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl border border-stone-300 bg-white px-4 py-3 text-sm font-medium text-slate-700"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href={siteLinks.installation}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+              className="rounded-2xl bg-teal-700 px-4 py-3 text-center text-sm font-semibold text-white"
+            >
+              Install
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
