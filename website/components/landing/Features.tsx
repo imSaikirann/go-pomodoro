@@ -1,48 +1,47 @@
+import { Brain, Clock3, Database, PlayCircle } from "lucide-react";
+import SectionLabel from "./SectionLabel";
+
 const features = [
   {
-    icon: "⚡",
-    title: "Background timer",
-    text: "Start a session and keep using your terminal. The timer runs as a background daemon — never blocking your workflow.",
+    icon: PlayCircle,
+    title: "Background sessions",
+    text: "Start a timer and keep using your terminal. The session keeps running behind your work.",
   },
   {
-    icon: "👁️",
-    title: "Live status watch",
-    text: "One command shows real-time progress: time left, cycle count, break state, and a visual progress bar. Pull it up whenever.",
+    icon: Clock3,
+    title: "Live status",
+    text: "Check phase, time left, cycles, breaks, and progress with one readable command.",
   },
   {
-    icon: "🧠",
-    title: "AI break coaching",
-    text: "Add your Groq API key and get context-aware break suggestions based on your session history. Completely optional.",
+    icon: Database,
+    title: "Local history",
+    text: "Completed sessions are saved locally, so your focus record stays on your machine.",
   },
   {
-    icon: "📁",
-    title: "Local session history",
-    text: "Every session is stored in SQLite on your machine. No cloud, no sync, no account. Your data stays yours forever.",
+    icon: Brain,
+    title: "Optional coaching",
+    text: "Add an API key when you want AI break tips. Ignore it when you want a plain timer.",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="px-[6vw] py-20 max-w-[1100px] mx-auto">
-      <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-[#aaa] mb-4">Features</div>
-      <h2 className="text-[clamp(28px,3.5vw,42px)] font-semibold tracking-[-0.03em] leading-[1.15] mb-4">
-        Simple by design.
-      </h2>
-      <p className="text-base font-light text-[#666] max-w-[500px] leading-[1.75] mb-14">
-        No dashboard. No subscription. No account. Just a timer that works the way your brain does.
-      </p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {features.map((f) => (
-          <div
-            key={f.title}
-            className="border border-[#e8e8e8] rounded-xl p-7 hover:border-[#ccc] transition-colors"
-          >
-            <div className="text-[36px] mb-5 leading-none">{f.icon}</div>
-            <h3 className="text-[15px] font-semibold tracking-tight mb-2">{f.title}</h3>
-            <p className="text-[13px] font-light text-[#666] leading-relaxed">{f.text}</p>
-          </div>
-        ))}
+    <section id="features" className="border-t border-neutral-200 px-4 py-20 sm:px-5 sm:py-24">
+      <div className="mx-auto max-w-6xl text-center">
+        <SectionLabel>Features</SectionLabel>
+        <h2 className="text-3xl font-semibold tracking-tight text-black sm:text-5xl">Everything you need, nothing loud.</h2>
+        <div className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <div key={feature.title} className="rounded-2xl border border-neutral-200 bg-white p-5 text-center sm:p-6">
+                <Icon className="mx-auto h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16" strokeWidth={1.75} />
+                <h3 className="mt-5 text-lg font-semibold text-black sm:mt-6">{feature.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-neutral-900">{feature.text}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
