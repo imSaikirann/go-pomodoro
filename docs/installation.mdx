@@ -1,0 +1,125 @@
+---
+title: Installation
+description: Install go-pomodoro with npm, Go, or from source.
+---
+
+# Installation
+
+You can install go-pomodoro with npm or Go.
+
+## Requirements
+
+For the npm package:
+
+- Node.js 16 or newer
+- npm
+
+For the Go install:
+
+- Go installed on your machine
+
+## Install with npm
+
+Use npm if you want the easiest install:
+
+```bash
+npm install -g go-pomodoro
+```
+
+After installation, check that the command is available:
+
+```bash
+pomodoro version
+```
+
+Start your first timer:
+
+```bash
+pomodoro start
+```
+
+## Install with Go
+
+Use Go if you prefer installing directly from the source module:
+
+```bash
+go install github.com/imSaikirann/go-pomodoro@latest
+```
+
+Make sure your Go binary directory is in your `PATH`.
+
+On many systems, this directory is:
+
+```bash
+~/go/bin
+```
+
+Then check the command:
+
+```bash
+pomodoro version
+```
+
+## Run from source
+
+Clone the repository:
+
+```bash
+git clone https://github.com/imSaikirann/go-pomodoro
+cd go-pomodoro
+```
+
+Run the CLI:
+
+```bash
+go run .
+```
+
+Run a command through Go:
+
+```bash
+go run . start
+go run . status
+go run . sessions
+```
+
+## Windows PowerShell notes
+
+If PowerShell says that a command is not recognized, close and reopen your terminal after installing.
+
+If npm scripts are blocked by PowerShell execution policy, use `npm.cmd`:
+
+```powershell
+npm.cmd install -g go-pomodoro
+```
+
+Then run:
+
+```powershell
+pomodoro version
+```
+
+## Update
+
+If you installed a released binary, you can try:
+
+```bash
+pomodoro update
+```
+
+Development builds cannot update themselves. If you installed from source, pull the latest code and rebuild or rerun:
+
+```bash
+git pull
+go run .
+```
+
+## Uninstall
+
+If you installed with npm:
+
+```bash
+npm uninstall -g go-pomodoro
+```
+
+If you installed with Go, remove the `pomodoro` binary from your Go binary directory.

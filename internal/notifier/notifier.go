@@ -1,21 +1,20 @@
 package notifier
 
 import (
-	"log"
+	"fmt"
+	"os"
 
 	"github.com/gen2brain/beeep"
 )
 
 func Notify(title, message string) {
-	err := beeep.Notify(title, message, "")
-	if err != nil {
-		log.Println("notification error:", err)
+	if err := beeep.Notify(title, message, ""); err != nil {
+		fmt.Fprintln(os.Stderr, "notification error:", err)
 	}
 }
 
 func Alert(title, message string) {
-	err := beeep.Alert(title, message, "")
-	if err != nil {
-		log.Println("alert error:", err)
+	if err := beeep.Alert(title, message, ""); err != nil {
+		fmt.Fprintln(os.Stderr, "alert error:", err)
 	}
 }

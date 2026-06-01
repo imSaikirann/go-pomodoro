@@ -1,0 +1,226 @@
+---
+title: Commands
+description: Complete command reference for go-pomodoro.
+---
+
+# Commands
+
+This page lists every go-pomodoro command and what it does.
+
+## `pomodoro`
+
+Show the welcome message.
+
+```bash
+pomodoro
+```
+
+Use this when you want to confirm the CLI is installed.
+
+## `pomodoro start`
+
+Start a focus timer.
+
+```bash
+pomodoro start
+```
+
+By default, this starts a 25 minute focus session.
+
+### Options
+
+| Option | Short | Default | Description |
+| --- | --- | ---: | --- |
+| `--minutes` | `-m` | `25` | Focus duration in minutes. |
+| `--deep` | `-d` | `false` | Enable deep work mode. |
+
+### Examples
+
+Start a default session:
+
+```bash
+pomodoro start
+```
+
+Start a 45 minute session:
+
+```bash
+pomodoro start -m 45
+```
+
+Start a 60 minute deep work session:
+
+```bash
+pomodoro start -m 60 -d
+```
+
+### Limits
+
+The `--minutes` value must be between 1 and 100.
+
+## `pomodoro deep`
+
+Start an interactive deep work session.
+
+```bash
+pomodoro deep
+```
+
+The CLI asks you to choose:
+
+| Choice | Duration | Use case |
+| ---: | ---: | --- |
+| `1` | 45 minutes | Deep entry |
+| `2` | 60 minutes | Standard deep work |
+| `3` | 120 minutes | Full immersion |
+
+If you enter an invalid choice, the timer defaults to 60 minutes.
+
+## `pomodoro status`
+
+Show the current timer status.
+
+```bash
+pomodoro status
+```
+
+If a timer is running, this prints the phase, remaining time, cycle count, breaks left, progress bar, and progress percentage.
+
+If no timer is running, it prints:
+
+```text
+No active timer
+```
+
+### Options
+
+| Option | Short | Description |
+| --- | --- | --- |
+| `--watch` | `-w` | Keep the status view open and update it every second. |
+
+### Examples
+
+Show status once:
+
+```bash
+pomodoro status
+```
+
+Watch status live:
+
+```bash
+pomodoro status -w
+```
+
+Exit watch mode with `Ctrl+C`.
+
+## `pomodoro pause`
+
+Pause the current session.
+
+```bash
+pomodoro pause
+```
+
+Use this when you are interrupted and want to continue the same timer later.
+
+## `pomodoro resume`
+
+Resume a paused session.
+
+```bash
+pomodoro resume
+```
+
+Use this after `pomodoro pause`.
+
+## `pomodoro stop`
+
+Stop the running timer.
+
+```bash
+pomodoro stop
+```
+
+This stops the background timer process and resets the current timer state.
+
+If no timer is running, it prints:
+
+```text
+No running session
+```
+
+## `pomodoro sessions`
+
+Show recent sessions.
+
+```bash
+pomodoro sessions
+```
+
+The command shows up to 10 recent sessions.
+
+The table includes:
+
+- Date and time.
+- Duration.
+- Type, such as normal or deep.
+- Focus score.
+
+## `pomodoro coach`
+
+Get productivity coaching from recent session history.
+
+```bash
+pomodoro coach
+```
+
+The command uses your recent sessions to build a short productivity summary.
+
+If AI is configured with `GROQ_API_KEY`, it can return AI-generated advice. If coaching was generated recently, go-pomodoro can reuse cached advice for a short time.
+
+If no sessions exist yet, it prints:
+
+```text
+No sessions yet. Complete some focus sessions first.
+```
+
+## `pomodoro monitor`
+
+Start the activity monitor.
+
+```bash
+pomodoro monitor
+```
+
+This starts a real-time sitting and activity monitor in the terminal.
+
+## `pomodoro update`
+
+Update go-pomodoro to the latest released version.
+
+```bash
+pomodoro update
+```
+
+This command only works for released builds. Development builds print an error because they do not know which released version they are.
+
+## `pomodoro version`
+
+Print the installed version.
+
+```bash
+pomodoro version
+```
+
+Example output:
+
+```text
+pomodoro 1.0.6
+```
+
+Development builds may print:
+
+```text
+pomodoro dev
+```

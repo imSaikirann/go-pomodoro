@@ -1,0 +1,17 @@
+{
+  "name": "go-pomodoro",
+  "version": "1.0.6",
+  "bin": {
+    "pomodoro": "bin/pomodoro.js"
+  },
+  "scripts": {
+    "postinstall": "node ./scripts/install.js"
+  },
+  "files": [
+    "bin",
+    "scripts"
+  ],
+  "engines": {
+    "node": ">=16"
+  }
+}

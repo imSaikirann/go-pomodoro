@@ -1,258 +1,30 @@
-
-
 # go-pomodoro
 
-A fast, distraction-free Pomodoro timer for developers who live in the terminal.
+A terminal-first Pomodoro timer for developers who want background focus sessions, live CLI status, session history, and optional AI break guidance.
 
-Built for focus. Designed for speed. Open source.
+## Highlights
 
-![Go Version](https://img.shields.io/github/go-mod/go-version/imSaikirann/go-pomodoro)
-![Downloads](https://img.shields.io/github/downloads/imSaikirann/go-pomodoro/total)
-![License](https://img.shields.io/github/license/imSaikirann/go-pomodoro)
+- Background timer that does not block your terminal
+- Live status with current phase, time left, cycles, and breaks remaining
+- Pause, resume, stop, and recent session history commands
+- Deep-work mode and automatic break/cycle rules
+- AI-powered break tips and coaching when `GROQ_API_KEY` is configured
 
----
+## Install
 
-## What is go-pomodoro?
-
-go-pomodoro is a modern terminal-first focus timer that helps developers stay in deep work without leaving the CLI.
-
-Unlike traditional Pomodoro apps, go-pomodoro is:
-
-* Extremely fast
-* Distraction-free
-* Insight-driven
-* Terminal native
-* Fully open source
-
-It fits naturally into developer workflows.
-
----
-
-## Demo
-
-```bash
-$ pomodoro start
-⏱  25:00 Focus session started...
-```
-
-> Tip: Add a GIF or screenshot here to improve conversions.
-
----
-
-## Features
-
-### Core
-
-* Terminal-native Pomodoro timer
-* Default 25-minute focus session
-* Custom duration support
-* Deep work mode
-* Session tracking
-* Real-time activity monitor
-
-### Intelligence Layer
-
-* AI productivity coach
-* Smart break suggestions
-* Progress-aware insights
-* Momentum detection
-
-### Developer Experience
-
-* Fast startup time
-* Clean Cobra command structure
-* Lipgloss-powered styling
-* Simple installation
-* Fully open source
-
----
-
-## Installation
-
-### Option 1 — npm (Recommended)
+### npm
 
 ```bash
 npm install -g go-pomodoro
 ```
 
-After installation:
+### Go
 
 ```bash
-pomodoro start
+go install github.com/imSaikirann/go-pomodoro@latest
 ```
 
----
-
-### Option 2 — Go install
-
-Requirements:
-
-* Go 1.20+
-
-```bash
-go install github.com/imSaikirann/go-pomodoro/cmd/pomodoro@latest
-```
-
----
-
-## Enable AI Features (Required for Coach)
-
-To use the AI coach and smart break suggestions, set your Groq API key as an environment variable.
-
-### Step 1 — Get your API key
-
-Get your Groq API key from your provider dashboard.
-
----
-
-### Step 2 — Set the environment variable
-
-#### macOS / Linux
-
-```bash
-export GROQ_API_KEY=your_api_key_here
-```
-
-To make it permanent, add it to your shell config:
-
-```bash
-echo 'export GROQ_API_KEY=your_api_key_here' >> ~/.bashrc
-# or ~/.zshrc
-```
-
----
-
-#### Windows (PowerShell)
-
-```powershell
-setx GROQ_API_KEY "your_api_key_here"
-```
-
-Restart the terminal after setting the variable.
-
----
-
-### Step 3 — Verify
-
-Run:
-
-```bash
-pomodoro coach
-```
-
-If the key is set correctly, AI insights will appear.
-
----
-
-## Commands
-
-### Start focus session (default 25 minutes)
-
-```bash
-pomodoro start
-```
-
-### Start with custom duration
-
-```bash
-pomodoro start 15
-```
-
-### Deep work mode
-
-```bash
-pomodoro deep
-```
-
-### Activity monitor
-
-```bash
-pomodoro monitor
-```
-
-### View sessions
-
-```bash
-pomodoro sessions
-```
-
-### AI coach
-
-```bash
-pomodoro coach
-```
-
-### Update CLI
-
-```bash
-pomodoro update
-```
-
-### Version
-
-```bash
-pomodoro version
-```
-
----
-
-## How the AI Coach Works
-
-The coach analyzes:
-
-* daily focus time
-* session patterns
-* momentum trends
-* deep work frequency
-
-It then generates contextual insights to help improve consistency.
-
-The system is designed to remain lightweight and fast.
-
----
-
-## Project Structure
-
-```text
-go-pomodoro/
-├─ cmd/            # Cobra commands
-├─ internal/       # core logic
-├─ pkg/            # reusable utilities
-├─ main.go
-└─ README.md
-```
-
----
-
-## Philosophy
-
-Most productivity tools fail because they add friction.
-
-go-pomodoro follows three principles:
-
-1. Stay in the terminal
-2. Reduce cognitive load
-3. Protect deep work
-
-If a feature does not improve focus, it does not ship.
-
----
-
-## Roadmap
-
-* Adaptive focus scoring
-* Focus streak tracking
-* Weekly analytics
-* Optional rich TUI mode
-* Cross-device sync (experimental)
-
----
-
-## Contributing
-
-Contributions are welcome.
-
-### Development setup
+### Local development
 
 ```bash
 git clone https://github.com/imSaikirann/go-pomodoro
@@ -260,16 +32,135 @@ cd go-pomodoro
 go run .
 ```
 
----
+## Quick Start
 
-## Open Source
+Start a default 25 minute session:
 
-go-pomodoro is fully open source under the MIT License.
+```bash
+pomodoro start
+```
 
-You are free to use, modify, and distribute it.
+Start a custom session:
 
----
+```bash
+pomodoro start -m 45
+```
+
+Watch progress live:
+
+```bash
+pomodoro status -w
+```
+
+Pause, resume, or stop:
+
+```bash
+pomodoro pause
+pomodoro resume
+pomodoro stop
+```
+
+See recent sessions:
+
+```bash
+pomodoro sessions
+```
+
+## Command Help
+
+Show all commands:
+
+```bash
+pomodoro --help
+```
+
+Show command-specific help:
+
+```bash
+pomodoro start --help
+pomodoro status --help
+pomodoro deep --help
+```
+
+## Core Commands
+
+```bash
+pomodoro start
+pomodoro start -m 25
+pomodoro start -m 60 -d
+pomodoro deep
+pomodoro status
+pomodoro status -w
+pomodoro pause
+pomodoro resume
+pomodoro stop
+pomodoro sessions
+pomodoro coach
+pomodoro monitor
+pomodoro update
+pomodoro version
+```
+
+## How The Timer Works
+
+- `start` launches the timer in the background and returns your terminal immediately
+- `status` reads the shared runtime state from SQLite
+- `status -w` shows the live phase, time remaining, cycle progress, and breaks left
+- Session history is stored in the local database and shown with `sessions`
+
+## AI Setup
+
+AI is optional. Without a key, the CLI falls back to built-in tips.
+
+### What AI powers
+
+- Break-tip notifications after focus sessions
+- Deep-work break guidance
+- `pomodoro coach` productivity advice
+
+### Set the key
+
+macOS / Linux:
+
+```bash
+export GROQ_API_KEY="your_api_key_here"
+```
+
+Windows PowerShell:
+
+```powershell
+setx GROQ_API_KEY "your_api_key_here"
+```
+
+Open a new terminal after running `setx`.
+
+### Verify AI is working
+
+```bash
+pomodoro coach
+```
+
+You can also start a timer and wait for the focus-complete notification. If AI is available, the break message uses an AI-generated tip. If not, it uses the built-in fallback tips.
+
+## Break And Cycle Rules
+
+- Under 10 min focus: 2 cycles, 1 min break
+- 10 to 30 min focus: 2 cycles, 5 min break
+- 31 to 45 min focus: 3 cycles, 8 min break
+- 46 to 60 min focus: 4 cycles, 10 min break
+- 61 to 90 min focus: 6 cycles, 15 min break
+- 90+ min focus: 6 cycles, 20 min break
+
+## Project Structure
+
+```text
+go-pomodoro/
+├─ cmd/pomodoro/   # Cobra commands
+├─ internal/       # timer, storage, AI, notifier, analytics
+├─ main.go
+└─ README.md
+```
 
 ## License
 
-MIT © imSaikirann
+MIT

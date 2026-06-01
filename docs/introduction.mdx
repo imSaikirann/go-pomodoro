@@ -1,0 +1,109 @@
+---
+title: Introduction
+description: Learn what go-pomodoro does and how it helps you run focus sessions from the terminal.
+---
+
+# go-pomodoro
+
+go-pomodoro is a simple terminal Pomodoro timer. It helps you start a focus session, keep the timer running in the background, check progress from the command line, take breaks, and review your recent sessions.
+
+It is built for developers and terminal users who want a timer that stays out of the way.
+
+## What you can do
+
+- Start a normal focus session.
+- Start a deep work session.
+- Watch the current timer status live.
+- Pause, resume, or stop a running timer.
+- View recent completed sessions.
+- Get optional AI productivity coaching.
+- Run an activity monitor from the terminal.
+
+## Basic workflow
+
+Install the CLI:
+
+```bash
+npm install -g go-pomodoro
+```
+
+Start a 25 minute focus session:
+
+```bash
+pomodoro start
+```
+
+Watch the timer:
+
+```bash
+pomodoro status -w
+```
+
+Pause or resume when needed:
+
+```bash
+pomodoro pause
+pomodoro resume
+```
+
+Stop the session:
+
+```bash
+pomodoro stop
+```
+
+See your recent sessions:
+
+```bash
+pomodoro sessions
+```
+
+## How it works
+
+When you run `pomodoro start`, the timer starts in the background. Your terminal is returned to you immediately, so you can keep working.
+
+The timer state is stored locally. Commands like `pomodoro status`, `pomodoro pause`, and `pomodoro stop` read or update that local timer state.
+
+Session history is also stored locally and can be viewed with:
+
+```bash
+pomodoro sessions
+```
+
+## Default timer
+
+The default focus session is 25 minutes:
+
+```bash
+pomodoro start
+```
+
+You can choose a different duration with `--minutes` or `-m`:
+
+```bash
+pomodoro start -m 45
+```
+
+The duration must be between 1 and 100 minutes.
+
+## Deep work mode
+
+Deep work mode is for longer focus blocks. You can start it in two ways:
+
+```bash
+pomodoro start -m 60 --deep
+```
+
+or:
+
+```bash
+pomodoro deep
+```
+
+The `pomodoro deep` command asks you to choose a deep work duration.
+
+## Optional AI features
+
+AI is optional. If you set `GROQ_API_KEY`, go-pomodoro can generate break tips and coaching advice.
+
+Without an API key, the CLI still works. It uses built-in fallback tips instead.

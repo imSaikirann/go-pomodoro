@@ -1,0 +1,90 @@
+---
+title: AI Coaching
+description: Set up optional AI break tips and productivity coaching.
+---
+
+# AI Coaching
+
+go-pomodoro works without AI. The core timer commands do not require an API key.
+
+If you set `GROQ_API_KEY`, the CLI can use AI for coaching and break guidance.
+
+## What AI is used for
+
+AI can help with:
+
+- Break tips after focus sessions.
+- Deep work break guidance.
+- Productivity advice from `pomodoro coach`.
+
+If AI is not configured, go-pomodoro uses built-in fallback tips where possible.
+
+## Set `GROQ_API_KEY`
+
+### macOS and Linux
+
+```bash
+export GROQ_API_KEY="your_api_key_here"
+```
+
+To make it permanent, add the export line to your shell profile, such as `.zshrc`, `.bashrc`, or `.profile`.
+
+### Windows PowerShell
+
+```powershell
+setx GROQ_API_KEY "your_api_key_here"
+```
+
+Close and reopen PowerShell after running `setx`.
+
+Then check that the variable exists:
+
+```powershell
+echo $env:GROQ_API_KEY
+```
+
+## Test coaching
+
+Complete a few focus sessions first:
+
+```bash
+pomodoro start
+pomodoro sessions
+```
+
+Then run:
+
+```bash
+pomodoro coach
+```
+
+If there are no sessions yet, the command prints:
+
+```text
+No sessions yet. Complete some focus sessions first.
+```
+
+## Coaching cache
+
+go-pomodoro can reuse recent coaching output for a short time. This keeps the command fast and avoids asking the AI service for new advice every time.
+
+If you want fresh advice, complete more sessions and run:
+
+```bash
+pomodoro coach
+```
+
+## Use without AI
+
+You can ignore AI setup completely and still use:
+
+```bash
+pomodoro start
+pomodoro status -w
+pomodoro pause
+pomodoro resume
+pomodoro stop
+pomodoro sessions
+```
+
+AI is an optional layer, not a requirement.

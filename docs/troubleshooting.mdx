@@ -1,0 +1,190 @@
+---
+title: Troubleshooting
+description: Fix common installation, terminal, timer, and Mintlify docs issues.
+---
+
+# Troubleshooting
+
+This page covers common problems and quick fixes.
+
+## `pomodoro` is not recognized
+
+If your terminal says `pomodoro` is not recognized, the CLI is not on your `PATH`.
+
+Try closing and reopening your terminal first.
+
+If you installed with npm, reinstall:
+
+```bash
+npm install -g go-pomodoro
+```
+
+On Windows PowerShell, use:
+
+```powershell
+npm.cmd install -g go-pomodoro
+```
+
+Then check:
+
+```bash
+pomodoro version
+```
+
+## PowerShell blocks npm
+
+PowerShell may show an error like:
+
+```text
+running scripts is disabled on this system
+```
+
+Use `npm.cmd` instead of `npm`:
+
+```powershell
+npm.cmd install -g go-pomodoro
+```
+
+This avoids the blocked PowerShell script wrapper.
+
+## No active timer
+
+If `pomodoro status` prints:
+
+```text
+No active timer
+```
+
+start a session:
+
+```bash
+pomodoro start
+```
+
+Then check again:
+
+```bash
+pomodoro status
+```
+
+## Stop a stuck timer
+
+If a timer looks stuck, stop it:
+
+```bash
+pomodoro stop
+```
+
+Then start a new one:
+
+```bash
+pomodoro start
+```
+
+## No sessions yet
+
+If `pomodoro sessions` prints:
+
+```text
+No sessions yet.
+```
+
+complete a focus session first.
+
+Start a short test session:
+
+```bash
+pomodoro start -m 1
+```
+
+After it finishes, run:
+
+```bash
+pomodoro sessions
+```
+
+## Coach says to complete sessions first
+
+`pomodoro coach` needs recent sessions.
+
+Run:
+
+```bash
+pomodoro sessions
+```
+
+If no sessions appear, complete a few focus sessions before using coaching.
+
+## AI tips are not showing
+
+AI features need `GROQ_API_KEY`.
+
+On macOS or Linux:
+
+```bash
+export GROQ_API_KEY="your_api_key_here"
+```
+
+On Windows PowerShell:
+
+```powershell
+setx GROQ_API_KEY "your_api_key_here"
+```
+
+Open a new terminal after using `setx`.
+
+The timer still works without AI.
+
+## `pomodoro update` fails
+
+If you see an error saying the development build cannot update, you are running a dev build.
+
+Use your original install method instead:
+
+```bash
+npm install -g go-pomodoro
+```
+
+or:
+
+```bash
+go install github.com/imSaikirann/go-pomodoro@latest
+```
+
+## Mintlify: `mintlify` is not recognized
+
+Mintlify now uses the `mint` CLI.
+
+From the `docs` folder, run:
+
+```bash
+npx.cmd mint dev
+```
+
+or install it globally:
+
+```bash
+npm.cmd install -g mint
+mint dev
+```
+
+Run Mintlify from the folder that contains `docs.json`.
+
+## Mintlify: invalid `docs.json`
+
+The docs site needs these required fields:
+
+- `name`
+- `theme`
+- `colors.primary`
+- `navigation`
+
+This project includes those fields in `docs.json`.
+
+If you edit the file and Mintlify fails, check that `colors.primary` is still a valid hex color:
+
+```json
+"colors": {
+  "primary": "#16A34A"
+}
+```

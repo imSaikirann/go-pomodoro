@@ -3,7 +3,7 @@ package timer
 func getBreakMinutes(focus int) int {
 	switch {
 	case focus < 10:
-		return 0
+		return 1
 	case focus <= 30:
 		return 5
 	case focus <= 45:
@@ -22,7 +22,7 @@ func getBreakMinutes(focus int) int {
 func getCycles(focus int) int {
 	switch {
 	case focus < 10:
-		return 1
+		return 2
 	case focus <= 30:
 		return 2
 	case focus <= 45:

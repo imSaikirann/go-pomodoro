@@ -1,0 +1,28 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "go-pomodoro",
+  "theme": "mint",
+  "colors": {
+    "primary": "#16A34A"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "usage",
+              "commands",
+              "ai-coaching",
+              "troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

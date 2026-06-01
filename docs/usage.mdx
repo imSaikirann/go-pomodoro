@@ -1,0 +1,198 @@
+---
+title: Usage
+description: Common go-pomodoro workflows for starting, watching, pausing, stopping, and reviewing sessions.
+---
+
+# Usage
+
+This page shows the most common ways to use go-pomodoro.
+
+## Start a focus session
+
+Start the default 25 minute timer:
+
+```bash
+pomodoro start
+```
+
+The timer starts in the background. You can keep using the same terminal for other work.
+
+## Start a custom timer
+
+Use `--minutes` or `-m` to choose the focus duration:
+
+```bash
+pomodoro start --minutes 45
+```
+
+Short form:
+
+```bash
+pomodoro start -m 45
+```
+
+The value must be between 1 and 100 minutes.
+
+## Start deep work mode
+
+Use `--deep` or `-d` with `start`:
+
+```bash
+pomodoro start -m 60 --deep
+```
+
+Short form:
+
+```bash
+pomodoro start -m 60 -d
+```
+
+You can also use the interactive deep work command:
+
+```bash
+pomodoro deep
+```
+
+It asks you to choose one of these focus blocks:
+
+- 45 minutes
+- 60 minutes
+- 120 minutes
+
+If the choice is invalid, it defaults to 60 minutes.
+
+## Check the current timer
+
+Show the current timer once:
+
+```bash
+pomodoro status
+```
+
+Watch the timer live:
+
+```bash
+pomodoro status --watch
+```
+
+Short form:
+
+```bash
+pomodoro status -w
+```
+
+The live view shows:
+
+- Current phase, such as focus or break.
+- Time remaining.
+- Current cycle.
+- Total cycles.
+- Breaks left.
+- Progress bar.
+- Progress percentage.
+
+Press `Ctrl+C` to exit the live status view.
+
+## Pause and resume
+
+Pause the current session:
+
+```bash
+pomodoro pause
+```
+
+Resume the paused session:
+
+```bash
+pomodoro resume
+```
+
+Use this when you are interrupted but want to continue the same session later.
+
+## Stop a session
+
+Stop the running timer:
+
+```bash
+pomodoro stop
+```
+
+This ends the current timer and resets the runtime state.
+
+If no timer is running, the CLI prints:
+
+```text
+No running session
+```
+
+## View recent sessions
+
+Show recent completed sessions:
+
+```bash
+pomodoro sessions
+```
+
+The output includes:
+
+- Date and time.
+- Duration.
+- Session type.
+- Focus score.
+
+If you have not completed any sessions yet, the CLI prints:
+
+```text
+No sessions yet.
+```
+
+## Get coaching
+
+Show productivity coaching based on recent sessions:
+
+```bash
+pomodoro coach
+```
+
+If you have no completed sessions yet, the CLI asks you to complete some focus sessions first.
+
+If `GROQ_API_KEY` is set, coaching can use AI. If not, the command still handles the missing key gracefully.
+
+## Run the activity monitor
+
+Start the activity monitor:
+
+```bash
+pomodoro monitor
+```
+
+This starts a real-time monitor in the terminal.
+
+## See help
+
+Show all commands:
+
+```bash
+pomodoro --help
+```
+
+Show help for a single command:
+
+```bash
+pomodoro start --help
+pomodoro status --help
+pomodoro deep --help
+```
+
+## Break and cycle rules
+
+go-pomodoro chooses breaks and cycles from the focus duration.
+
+| Focus duration | Cycles | Break length |
+| --- | ---: | ---: |
+| Under 10 minutes | 2 | 1 minute |
+| 10 to 30 minutes | 2 | 5 minutes |
+| 31 to 45 minutes | 3 | 8 minutes |
+| 46 to 60 minutes | 4 | 10 minutes |
+| 61 to 90 minutes | 6 | 15 minutes |
+| More than 90 minutes | 6 | 20 minutes |
