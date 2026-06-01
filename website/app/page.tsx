@@ -51,7 +51,7 @@ const commands = [
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto mb-4 w-fit rounded-full border border-neutral-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
+    <div className="mx-auto mb-4 w-fit rounded-full border border-neutral-300 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-800">
       {children}
     </div>
   );
@@ -60,26 +60,26 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 export default function Home() {
   return (
     <div className="bg-white text-black">
-      <section className="mx-auto flex min-h-[calc(100vh-60px)] max-w-4xl flex-col items-center justify-center px-5 pb-12 pt-24 text-center">
-        <div className="mb-10 inline-flex rounded border border-neutral-300 bg-white px-4 py-2 font-mono text-[11px] uppercase tracking-[0.28em] text-neutral-500">
-          Open source <span className="px-3 text-neutral-300">-</span> CLI <span className="px-3 text-neutral-300">-</span> Go
+      <section className="mx-auto flex min-h-[calc(100vh-60px)] max-w-4xl flex-col items-center justify-center px-4 pb-12 pt-20 text-center sm:px-5 sm:pt-24">
+        <div className="mb-8 inline-flex max-w-full flex-wrap justify-center rounded border border-neutral-300 bg-white px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-800 sm:mb-10 sm:px-4 sm:text-[11px] sm:tracking-[0.28em]">
+          Open source <span className="px-2 text-neutral-500 sm:px-3">-</span> CLI <span className="px-2 text-neutral-500 sm:px-3">-</span> Go
         </div>
 
-        <h1 className="max-w-3xl text-[44px] font-semibold leading-[1.08] tracking-[-0.04em] sm:text-[64px]">
+        <h1 className="max-w-3xl text-5xl font-semibold leading-[1.08] tracking-tight text-black sm:text-6xl md:text-7xl">
           Focus sessions
-          <span className="ml-2 inline-block h-[0.95em] w-2 translate-y-1 bg-neutral-300" />
+          <span className="ml-2 inline-block h-[0.95em] w-2 translate-y-1 bg-neutral-500" />
           <br />
-          <span className="text-neutral-400">without the noise.</span>
+          <span className="text-neutral-700">without the noise.</span>
         </h1>
 
-        <p className="mt-8 max-w-2xl text-lg leading-9 text-neutral-700">
+        <p className="mt-7 max-w-2xl text-base leading-8 text-neutral-900 sm:mt-8 sm:text-lg sm:leading-9">
           A Pomodoro timer that lives in your terminal, runs in the background, and stays out of your way.
         </p>
 
-        <div className="mt-12 flex w-full max-w-xl flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-10 flex w-full max-w-xl flex-col items-stretch justify-center gap-3 sm:mt-12 sm:flex-row sm:items-center">
           <a
             href={siteLinks.installation}
-            className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-200 bg-white px-6 py-3 font-mono text-sm font-semibold text-neutral-300 transition hover:border-black hover:text-black sm:w-60"
+            className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-300 bg-white px-4 py-3 font-mono text-sm font-semibold text-black transition hover:border-black sm:w-60"
           >
             npm i -g go-pomodoro
           </a>
@@ -87,7 +87,7 @@ export default function Home() {
             href="https://github.com/imSaikirann/go-pomodoro"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-200 bg-white px-6 py-3 font-mono text-sm font-semibold text-neutral-300 transition hover:border-black hover:text-black sm:w-40"
+            className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-300 bg-white px-4 py-3 font-mono text-sm font-semibold text-black transition hover:border-black sm:w-40"
           >
             View on GitHub
           </a>
@@ -102,29 +102,29 @@ export default function Home() {
         </a>
       </section>
 
-      <section id="problem" className="border-t border-neutral-200 px-5 py-24 text-center">
+      <section id="problem" className="border-t border-neutral-200 px-4 py-20 text-center sm:px-5 sm:py-24">
         <SectionLabel>Problem</SectionLabel>
         <Activity className="mx-auto h-20 w-20" />
-        <h2 className="mx-auto mt-8 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h2 className="mx-auto mt-8 max-w-3xl text-3xl font-semibold tracking-tight text-black sm:text-5xl">
           Most timers interrupt the focus they are supposed to protect.
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-neutral-600">
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-neutral-900">
           Browser timers pull you into another tab. App timers add another window. Many CLI timers block your shell. go-pomodoro keeps the timer useful and quiet.
         </p>
       </section>
 
-      <section id="features" className="border-t border-neutral-200 px-5 py-24">
+      <section id="features" className="border-t border-neutral-200 px-4 py-20 sm:px-5 sm:py-24">
         <div className="mx-auto max-w-6xl text-center">
           <SectionLabel>Features</SectionLabel>
-          <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Everything you need, nothing loud.</h2>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <h2 className="text-3xl font-semibold tracking-tight text-black sm:text-5xl">Everything you need, nothing loud.</h2>
+          <div className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <div key={feature.title} className="rounded-2xl border border-neutral-200 bg-white p-6 text-center">
                   <Icon className="mx-auto h-16 w-16" />
-                  <h3 className="mt-6 text-lg font-semibold">{feature.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-neutral-600">{feature.text}</p>
+                  <h3 className="mt-6 text-lg font-semibold text-black">{feature.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-neutral-900">{feature.text}</p>
                 </div>
               );
             })}
@@ -132,15 +132,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="benefits" className="border-t border-neutral-200 px-5 py-24 text-center">
+      <section id="benefits" className="border-t border-neutral-200 px-4 py-20 text-center sm:px-5 sm:py-24">
         <SectionLabel>Benefits</SectionLabel>
         <PauseCircle className="mx-auto h-20 w-20" />
-        <h2 className="mx-auto mt-8 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h2 className="mx-auto mt-8 max-w-3xl text-3xl font-semibold tracking-tight text-black sm:text-5xl">
           Less setup. Less switching. More work finished.
         </h2>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
+        <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:mt-12 sm:grid-cols-2">
           {benefits.map((benefit) => (
-            <div key={benefit} className="flex items-center justify-center gap-3 rounded-2xl border border-neutral-200 p-5 text-sm font-medium">
+            <div key={benefit} className="flex items-center justify-center gap-3 rounded-2xl border border-neutral-300 p-5 text-sm font-semibold text-black">
               <CheckCircle2 className="h-6 w-6 shrink-0" />
               <span>{benefit}</span>
             </div>
@@ -148,14 +148,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="commands" className="border-t border-neutral-200 px-5 py-24">
+      <section id="commands" className="border-t border-neutral-200 px-4 py-20 sm:px-5 sm:py-24">
         <div className="mx-auto max-w-4xl text-center">
           <SectionLabel>Commands</SectionLabel>
           <Terminal className="mx-auto h-20 w-20" />
-          <h2 className="mt-8 text-4xl font-semibold tracking-tight sm:text-5xl">Small command surface.</h2>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-neutral-200 text-left">
+          <h2 className="mt-8 text-3xl font-semibold tracking-tight text-black sm:text-5xl">Small command surface.</h2>
+          <div className="mt-10 overflow-hidden rounded-2xl border border-neutral-300 text-left sm:mt-12">
             {commands.map((command) => (
-              <div key={command} className="border-b border-neutral-200 px-5 py-4 font-mono text-sm last:border-b-0">
+              <div key={command} className="border-b border-neutral-200 px-4 py-4 font-mono text-sm font-semibold text-black last:border-b-0 sm:px-5">
                 {command}
               </div>
             ))}
@@ -169,8 +169,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-neutral-200 px-5 py-24 text-center text-black">
-        <h2 className="mx-auto max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.04em] text-black sm:text-5xl">
+      <section className="border-t border-neutral-200 px-4 py-20 text-center text-black sm:px-5 sm:py-24">
+        <h2 className="mx-auto max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-black sm:text-5xl">
           Start your first
           <br />
           focus session now.
@@ -178,13 +178,13 @@ export default function Home() {
         <p className="mx-auto mt-7 max-w-xl text-base leading-7 text-black">
           Open your terminal. One command is all it takes.
         </p>
-        <div className="mx-auto mt-10 inline-flex rounded-lg border border-neutral-200 bg-neutral-100 px-7 py-4 font-mono text-sm font-semibold text-black">
+        <div className="mx-auto mt-10 inline-flex max-w-full rounded-lg border border-neutral-300 bg-neutral-100 px-5 py-4 font-mono text-sm font-semibold text-black sm:px-7">
           npm i -g go-pomodoro
         </div>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <a
             href={siteLinks.docs}
-            className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-7 py-3 font-mono text-sm font-semibold text-black transition hover:border-black"
+            className="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-7 py-3 font-mono text-sm font-semibold text-black transition hover:border-black"
           >
             Read the docs
           </a>
@@ -192,7 +192,7 @@ export default function Home() {
             href="https://github.com/imSaikirann/go-pomodoro"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-lg border border-neutral-200 bg-white px-7 py-3 font-mono text-sm font-semibold text-black transition hover:border-black"
+            className="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-7 py-3 font-mono text-sm font-semibold text-black transition hover:border-black"
           >
             View source &gt;
           </a>

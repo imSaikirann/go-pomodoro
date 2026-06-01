@@ -16,14 +16,14 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white">
-      <div className="mx-auto flex h-[60px] max-w-4xl items-center justify-between px-5">
+      <div className="mx-auto flex h-[60px] max-w-4xl items-center justify-between px-4 sm:px-5">
         <Link href="/" className="font-mono text-[15px] font-semibold tracking-tight text-black">
           go-pomodoro
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm font-normal text-neutral-700 transition hover:text-black">
+            <a key={link.href} href={link.href} className="text-sm font-medium text-black transition hover:text-neutral-600">
               {link.label}
             </a>
           ))}
@@ -51,7 +51,7 @@ export default function Navbar() {
 
       {open && (
         <div className="border-t border-neutral-200 bg-white md:hidden">
-          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-4">
+          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 sm:px-5">
             {links.map((link) => (
               <a
                 key={link.href}
