@@ -1,30 +1,42 @@
-$releaseDir = "release"
-$version = "v0.2.0"   
+$ErrorActionPreference = "Stop"
 
+$releaseDir = "release"
+$version = "v0.2.2"
+$ldflags = "-X github.com/imSaikirann/go-pomodoro/cmd/pomodoro.Version=$version -X github.com/imSaikirann/go-pomodoro/internal/update.Version=$version"
+
+function Assert-LastCommandSucceeded {
+    param([string]$Step)
+
+    if ($LASTEXITCODE -ne 0) {
+        throw "$Step failed with exit code $LASTEXITCODE"
+    }
+}
+
+Remove-Item $releaseDir -Recurse -Force -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $releaseDir | Out-Null
+New-Item -ItemType Directory -Force -Path "$releaseDir/go-cache" | Out-Null
+New-Item -ItemType Directory -Force -Path "$releaseDir/go-build" | Out-Null
+
+$env:GOCACHE = (Resolve-Path "$releaseDir/go-cache").Path
+$env:GOTMPDIR = (Resolve-Path "$releaseDir/go-build").Path
 
 Write-Host "Building Windows..."
-$env:GOOS="windows"; $env:GOARCH="amd64"
-go build -ldflags="-X main.Version=$version" -o "$releaseDir/pomodoro.exe" ./cmd/pomodoro
+$env:GOOS = "windows"
+$env:GOARCH = "amd64"
+go build -buildvcs=false -ldflags="$ldflags" -o "$releaseDir/pomodoro.exe" .
+Assert-LastCommandSucceeded "Windows build"
 
-Write-Host "Building Linux..."
-$env:GOOS="linux"; $env:GOARCH="amd64"
-go build -ldflags="-X main.Version=$version" -o "$releaseDir/pomodoro-linux-amd64" ./cmd/pomodoro
+Remove-Item Env:GOOS -ErrorAction SilentlyContinue
+Remove-Item Env:GOARCH -ErrorAction SilentlyContinue
+Remove-Item Env:GOCACHE -ErrorAction SilentlyContinue
+Remove-Item Env:GOTMPDIR -ErrorAction SilentlyContinue
 
-Write-Host "Building macOS..."
-$env:GOOS="darwin"; $env:GOARCH="amd64"
-go build -ldflags="-X main.Version=$version" -o "$releaseDir/pomodoro-darwin-amd64" ./cmd/pomodoro
-
-Remove-Item Env:GOOS
-Remove-Item Env:GOARCH
+Write-Host "Testing Windows binary..."
+$exePath = (Resolve-Path "$releaseDir/pomodoro.exe").Path
+& $exePath version
+Assert-LastCommandSucceeded "Windows binary test"
 
 Write-Host "Packaging Windows zip..."
 Compress-Archive "$releaseDir/pomodoro.exe" "$releaseDir/pomodoro-windows-amd64.zip" -Force
 
-Write-Host "Packaging Linux tar.gz..."
-tar -czf "$releaseDir/pomodoro-linux-amd64.tar.gz" -C $releaseDir pomodoro-linux-amd64
-
-Write-Host "Packaging macOS tar.gz..."
-tar -czf "$releaseDir/pomodoro-darwin-amd64.tar.gz" -C $releaseDir pomodoro-darwin-amd64
-
-Write-Host "Release artifacts ready in /release"
+Write-Host "Windows artifact ready in /release"

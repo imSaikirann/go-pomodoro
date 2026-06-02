@@ -18,9 +18,12 @@ export default function Benefits() {
       </h2>
       <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:mt-12 sm:grid-cols-2">
         {benefits.map((benefit) => (
-          <div key={benefit} className="flex items-center justify-start gap-3 rounded-2xl border border-neutral-300 p-4 text-left text-sm font-semibold text-black sm:justify-center sm:p-5 sm:text-center">
-            <CheckCircle2 className="h-5 w-5 shrink-0 sm:h-6 sm:w-6 text-neutral-500" strokeWidth={2} />
-            <span>{benefit}</span>
+          <div
+            key={benefit}
+            className="grid min-h-20 grid-cols-[1.5rem_1fr] items-center gap-4 rounded-lg border border-neutral-300 bg-white px-5 py-4 text-left text-sm font-semibold text-black sm:px-6"
+          >
+            <CheckCircle2 className="h-5 w-5 text-neutral-500" strokeWidth={2} />
+            <span className="leading-6">{benefit}</span>
           </div>
         ))}
       </div>

@@ -22,7 +22,25 @@ export default function Navbar() {
           go-pomodoro
         </Link>
 
-        <div className="relative">
+        <nav className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="text-sm font-medium text-black transition hover:text-neutral-600">
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden items-center md:flex">
+          <a
+            href={siteLinks.installation}
+            className="rounded-md bg-black px-5 py-2.5 text-sm font-semibold !text-white transition hover:bg-neutral-800"
+            style={{ color: "#ffffff" }}
+          >
+            Install now
+          </a>
+        </div>
+
+        <div className="relative md:hidden">
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
@@ -35,24 +53,24 @@ export default function Navbar() {
 
           {open && (
             <nav className="absolute right-0 top-12 w-44 overflow-hidden rounded-lg border border-neutral-200 bg-white text-left shadow-lg">
-            {links.map((link) => (
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block border-b border-neutral-100 px-4 py-3 text-sm font-medium text-black transition last:border-b-0 hover:bg-neutral-50"
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.href}
-                href={link.href}
+                href={siteLinks.installation}
                 onClick={() => setOpen(false)}
-                className="block border-b border-neutral-100 px-4 py-3 text-sm font-medium text-black transition last:border-b-0 hover:bg-neutral-50"
+                className="block bg-black px-4 py-3 text-sm font-semibold !text-white transition hover:bg-neutral-800"
+                style={{ color: "#ffffff" }}
               >
-                {link.label}
+                Install now
               </a>
-            ))}
-            <a
-              href={siteLinks.installation}
-              onClick={() => setOpen(false)}
-              className="block bg-black px-4 py-3 text-sm font-semibold !text-white transition hover:bg-neutral-800"
-              style={{ color: "#ffffff" }}
-            >
-              Install now
-            </a>
             </nav>
           )}
         </div>
