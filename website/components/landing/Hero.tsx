@@ -1,5 +1,5 @@
 import { ArrowDown } from "lucide-react";
-import { siteLinks } from "@/lib/site-links";
+import CopyCommand from "@/components/CopyCommand";
 
 export default function Hero() {
   return (
@@ -19,12 +19,7 @@ export default function Hero() {
       </p>
 
       <div className="mt-10 flex w-full max-w-xl flex-col items-stretch justify-center gap-3 sm:mt-12 sm:flex-row sm:items-center">
-        <a
-          href={siteLinks.installation}
-          className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-300 bg-white px-4 py-3 font-mono text-sm font-semibold text-black transition hover:border-black sm:w-60"
-        >
-          npm i -g go-pomodoro
-        </a>
+        <CopyCommand command="npm i -g go-pomodoro" className="w-full sm:w-64" />
         <a
           href="https://github.com/imSaikirann/go-pomodoro"
           target="_blank"
@@ -37,7 +32,7 @@ export default function Hero() {
 
       <a
         href="#problem"
-        className="mt-8 inline-flex h-11 w-11 items-center justify-center rounded-full bg-neutral-700 text-white shadow-lg transition hover:bg-black"
+        className="mt-8 inline-flex h-11 w-11 items-center justify-center rounded-full bg-neutral-200 text-white shadow-lg transition"
         aria-label="Scroll to problem section"
       >
         <ArrowDown className="h-5 w-5" />

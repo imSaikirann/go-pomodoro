@@ -1,3 +1,4 @@
+import CopyCommand from "@/components/CopyCommand";
 import { siteLinks } from "@/lib/site-links";
 
 export default function CTA() {
@@ -11,9 +12,7 @@ export default function CTA() {
       <p className="mx-auto mt-7 max-w-xl text-base leading-7 text-black">
         Open your terminal. One command is all it takes.
       </p>
-      <div className="mx-auto mt-10 inline-flex max-w-full rounded-lg border border-neutral-300 bg-neutral-100 px-5 py-4 font-mono text-sm font-semibold text-black sm:px-7">
-        npm i -g go-pomodoro
-      </div>
+      <CopyCommand command="npm i -g go-pomodoro" className="mx-auto mt-10" />
       <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
         <a
           href={siteLinks.docs}

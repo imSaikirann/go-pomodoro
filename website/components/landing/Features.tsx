@@ -35,7 +35,7 @@ export default function Features() {
             const Icon = feature.icon;
             return (
               <div key={feature.title} className="rounded-2xl border border-neutral-200 bg-white p-5 text-center sm:p-6">
-                <Icon className="mx-auto h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16" strokeWidth={1.75} />
+                <Icon className="mx-auto h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 text-neutral-500" strokeWidth={1.75} />
                 <h3 className="mt-5 text-lg font-semibold text-black sm:mt-6">{feature.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-neutral-900">{feature.text}</p>
               </div>
